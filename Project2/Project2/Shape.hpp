@@ -12,77 +12,105 @@ using std::string;
 
 class Shape {
 public:
-	[[nodiscard]] virtual int getHeight() const = 0;
-	[[nodiscard]] virtual int getWidth() const = 0;
-	[[nodiscard]] virtual string getPostScript() const = 0;
 	virtual ~Shape() = default;
+	[[nodiscard]] virtual string getPostScript() const = 0;
+
 };
 
-class Circle : public Shape { // Circle(radius)
+class Circle : public Shape {
 public:
-	[[nodiscard]] int getHeight() const override;
-	[[nodiscard]] int getWidth() const override;
+	Circle(double rad);
+
+	[[nodiscard]] double getRadius() const noexcept;
 	[[nodiscard]] string getPostScript() const override;
-	Circle(unique_ptr<Shape> lhs, unique_ptr<Shape> rhs);
+
 private:
-	unique_ptr<Shape> _lhs;
-	unique_ptr<Shape> _rhs;
-
+	double _radius;
+	// unique_ptr<DrawCircleStrategy> drawing; 
 };
 
-class Polygon : public Shape { // Polygon(sides, length)
-	[[nodiscard]] int getHeight() const override;
-	[[nodiscard]] int getWidth() const override;
+class Polygon : public Shape {
+	Polygon(int sides, double length);
+
+	[[nodiscard]] int getSides() const noexcept;
+	[[nodiscard]] double getLength() const noexcept;
 	[[nodiscard]] string getPostScript() const override;
-	Polygon(unique_ptr<Shape> lhs, unique_ptr<Shape> rhs);
+
 private:
-	unique_ptr<Shape> _lhs;
-	unique_ptr<Shape> _rhs;
+	int _numSides;
+	double _sideLength;
 };
 
-class Rectangle : public Shape { // Rectangle(width,height)
-	[[nodiscard]] int getHeight() const override;
-	[[nodiscard]] int getWidth() const override;
+class Rectangle : public Shape {
+	Rectangle(double width, double height);
+	[[nodiscard]] double getWidth() const noexcept;
+	[[nodiscard]] double getHeight() const noexcept;
+	[[nodiscard]] string getPostScript() const override;
+
+private:
+	double _width;
+	double _height;
+};
+
+class Spacer : public Shape {
+	Spacer(double width, double height);
+	[[nodiscard]] double getWidth() const noexcept;
+	[[nodiscard]] double getHeight() const noexcept;
+	[[nodiscard]] string getPostScript() const override;
+
+private:
+	double _width;
+	double _height;
+};
+
+
+class Square : public Shape {
+	Square(double sideLength);
+	[[nodiscard]] double getLength() const noexcept;
+	[[nodiscard]] string getPostScript() const override;
+
+private:
+	double _length;
+};
+
+class Triangle : public Shape {
+	Triangle(double sideLength);
+	[[nodiscard]] double getLength() const noexcept;
+	[[nodiscard]] string getPostScript() const override;
+
+private:
+	double _length;
+};
+
+class Rotated : public Shape {
+	Rotated(Shape shape, RotationAngle angle);
+	[[nodiscard]] string getPostScript() const override;
+private:
+};
+
+class Scaled : public Shape {
+	Scaled(Shape shape, double fx, double fy);
+	[[nodiscard]] double getScalingX() const noexcept;
+	[[nodiscard]] double getScalingY() const noexcept;
+	[[nodiscard]] string getPostScript() const override;
+
+private:
+	double _fx;
+	double _fy;
+};
+
+class Layered : public Shape { 
+	Layered(Shape shape, Shape shape2 /*, shape3, ...*/);
 	[[nodiscard]] string getPostScript() const override;
 };
 
-class Spacer : public Shape { // Spacer(width,height)
-	[[nodiscard]] int getHeight() const override;
-	[[nodiscard]] int getWidth() const override;
+class Vertical : public Shape {
+	Vertical(Shape shape, Shape shape2 /*, shape3, ...*/);
 	[[nodiscard]] string getPostScript() const override;
 };
 
-
-class Square : public Shape { // Square(length)
-	[[nodiscard]] int getHeight() const override;
-	[[nodiscard]] int getWidth() const override;
-	[[nodiscard]] string getPostScript() const override;
-};
-
-class Triangle : public Shape { // Triangle(length)
-	[[nodiscard]] int getHeight() const override;
-	[[nodiscard]] int getWidth() const override;
-	[[nodiscard]] string getPostScript() const override;
-};
-
-class RotatedShape : public Shape { // RotatedShape(shape,angle)
-
-	[[nodiscard]] string getPostScript() const override;
-};
-
-class ScaledShape : public Shape { // ScaledShape(shape,sx,sy)
-	[[nodiscard]] string getPostScript() const override;
-};
-
-class LayeredShape : public Shape { // LayeredShape(shape1, shape2,...)
-	[[nodiscard]] string getPostScript() const override;
-};
-
-class VerticalShape : public Shape { // VerticalShape(shape1, shape2,...)
-	[[nodiscard]] string getPostScript() const override;
-};
-
-class HorizontalShape : public Shape { // HorizontalShape(shape1, shape2,...)
+class Horizontal : public Shape {
+	Horizontal(Shape shape, Shape shape2 /*, shape3, ...*/);
 	[[nodiscard]] string getPostScript() const override;
 };
 #endif //!SHAPE_HPP
