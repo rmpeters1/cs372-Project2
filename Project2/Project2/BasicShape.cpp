@@ -89,3 +89,23 @@ std::string Spacer::getPostScript() const
 {
 	return std::string("255 255 255 setrgbcolor newpath 0 0 moveto 0 " + std::to_string(_height) + " lineto " + std::to_string(_width) + " 0 lineto 0 " + std::to_string(-_height) + " lineto closepath stroke\n");
 }
+
+Scaled::Scaled(Shape_ptr shape, double fx, double fy) {
+	
+	_fx = fx;
+	_fy = fy;
+	_shape = std::move(shape);
+
+}
+
+double Scaled::getScaleX() const {
+	return _fx;
+}
+
+double Scaled::getScaleY() const {
+	return _fy;
+}
+
+string Scaled::getPostScript() const {
+	return std::string(std::to_string(_fx) + " " + std::to_string(_fy) + " scale \n")
+}

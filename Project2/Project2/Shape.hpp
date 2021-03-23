@@ -88,14 +88,17 @@ private:
 };*/
 
 class Scaled : public Shape {
-	Scaled(Shape shape, double fx, double fy);
-	double getScalingX() const noexcept;
-	double getScalingY() const noexcept;
+	Scaled(Shape_ptr shape, double fx, double fy) {
+
+	}
+	double getScaleX() const noexcept;
+	double getScaleY() const noexcept;
 	string getPostScript() const override;
 
 private:
 	double _fx;
 	double _fy;
+	Shape_ptr _shape;
 };
 
 class Layered : public Shape {
