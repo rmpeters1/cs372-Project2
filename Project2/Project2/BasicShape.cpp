@@ -37,12 +37,51 @@ std::string Circle::getPostScript() const
 }
 
 
-
 // Polygon Class
+Polygon::Polygon(int numSides, double sideLength)
+{
+	_numSides = numSides;
+	_sideLength = sideLength;
 
-////////////////
+	if (numSides % 2 != 0)
+	{
+		_height = sideLength * ((1.0 + cos(pi / numSides)) / (2.0 * sin(pi / numSides)));
+		_width = ((sideLength * sin(pi * (numSides - 1) / (2 * numSides))) / sin(pi / numSides));
+	}
+	else if (numSides % 4 == 0)
+	{
+		_height = sideLength * (cos(pi / numSides)) / (sin(pi / numSides));
+		_width = (sideLength * (cos(pi / numSides)) / (sin(pi / numSides)));
+		
+	}
+	else
+	{
+		_height = sideLength * ((cos(pi / numSides)) / (sin(pi / numSides)));
+		_width = sideLength / sin(pi / numSides);
+	}
+}
 
+double Polygon::getWidth() const noexcept
+{
+	return _width;
+}
+double Polygon::getHeight() const noexcept
+{
+	return _height;
+}
 
+std::string Polygon::getPostScript() const
+{
+	return std::string("/length " + std::to_string(_sideLength) + " def\n"
+		+ "/nSides " + std::to_string(_numSides) + " def\n"
+		+ "/angle { 360 nSides div } def\n" + "gsave\n"
+		+ std::to_string(_width / 2) + " " + std::to_string(_height / 2)
+		+ " translate\n" + "newpath\n" + "0 0 moveto\n"
+		+ "0 angle 360 {\n" + "length 0 lineto\n"
+		+ "length 0 translate\n" + "angle rotate\n" + "} for\n"
+		+ "closepath\n" + "stroke\n" + "grestore\n");
+
+}
 
 // Rectangle Class
 Rectangle::Rectangle(double width, double height)
@@ -63,7 +102,9 @@ double Rectangle::getWidth() const noexcept
 
 std::string Rectangle::getPostScript() const
 {
-	return std::string("newpath 0 0 moveto 0 " + std::to_string(_height) + " lineto " + std::to_string(_width) + " 0 lineto 0 " + std::to_string(-_height) + " lineto closepath stroke\n");
+	return std::string("newpath \n 0 0 moveto\n 0 " + std::to_string(_height) 
+		+ " lineto\n " + std::to_string(_width) + " 0 lineto\n 0 " 
+		+ std::to_string(-_height) + " lineto\n closepath\n stroke\n");
 }
 
 
@@ -87,10 +128,12 @@ double Spacer::getWidth() const noexcept
 
 std::string Spacer::getPostScript() const
 {
-	return std::string("255 255 255 setrgbcolor newpath 0 0 moveto 0 " + std::to_string(_height) + " lineto " + std::to_string(_width) + " 0 lineto 0 " + std::to_string(-_height) + " lineto closepath stroke\n");
+	return std::string("255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 " 
+		+ std::to_string(_height) + " lineto\n " + std::to_string(_width) 
+		+ " 0 lineto\n 0 " + std::to_string(-_height) + " lineto\n closepath\n stroke\n");
 }
 
-Scaled::Scaled(Shape_ptr shape, double fx, double fy)  {
+Scaled::Scaled(Shape_ptr shape, double fx, double fy) {
 
 	_fx = fx;
 	_fy = fy;
@@ -109,6 +152,5 @@ double Scaled::getScaleY() const noexcept {
 }
 
 string Scaled::getPostScript() const {
-	return std::string(/*shape*/ + " " +std::to_string(_fx) + " " + std::to_string(_fy) + " scale \n");
+	return std::string(/*shape*/ +" " + std::to_string(_fx) + " " + std::to_string(_fy) + " scale \n");
 }
-
