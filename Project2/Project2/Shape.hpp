@@ -99,17 +99,17 @@ private:
 };
 
 class Layered : public Shape {
-	Layered(Shape shape, Shape shape2 /*, shape3, ...*/);
+	Layered(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
 	string getPostScript() const override;
 };
 
 class Vertical : public Shape {
-	Vertical(Shape shape, Shape shape2 /*, shape3, ...*/);
+	Vertical(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
 	string getPostScript() const override;
 };
 
 class Horizontal : public Shape {
-		Horizontal(Shape shape, Shape shape2 /*, shape3, ...*/);
+		Horizontal(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
 	string getPostScript() const override;
 };
 #endif //!SHAPE_HPP
