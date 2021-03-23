@@ -63,4 +63,53 @@ private:
 	double _width;
 };
 
+class Square : public Shape {
+	Square(double sideLength);
+	double getLength() const noexcept;
+	string getPostScript() const override;
+
+private:
+	double _length;
+};
+
+class Triangle : public Shape {
+	Triangle(double sideLength);
+	double getLength() const noexcept;
+	string getPostScript() const override;
+
+private:
+	double _length;
+};
+
+/*class Rotated : public Shape {
+	Rotated(Shape shape, RotationAngle angle);
+	string getPostScript() const override;
+private:
+};*/
+
+class Scaled : public Shape {
+	Scaled(Shape shape, double fx, double fy);
+	double getScalingX() const noexcept;
+	double getScalingY() const noexcept;
+	string getPostScript() const override;
+
+private:
+	double _fx;
+	double _fy;
+};
+
+class Layered : public Shape {
+	Layered(Shape shape, Shape shape2 /*, shape3, ...*/);
+	string getPostScript() const override;
+};
+
+class Vertical : public Shape {
+	Vertical(Shape shape, Shape shape2 /*, shape3, ...*/);
+	string getPostScript() const override;
+};
+
+class Horizontal : public Shape {
+		Horizontal(Shape shape, Shape shape2 /*, shape3, ...*/);
+	string getPostScript() const override;
+};
 #endif //!SHAPE_HPP
