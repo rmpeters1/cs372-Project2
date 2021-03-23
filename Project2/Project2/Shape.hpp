@@ -82,19 +82,17 @@ private:
 };
 
 /*class Rotated : public Shape {
-	Rotated(Shape shape, RotationAngle angle);
+	Rotated(Shape_ptr shape, RotationAngle angle);
 	string getPostScript() const override;
 private:
 };*/
 
 class Scaled : public Shape {
-	Scaled(Shape_ptr shape, double fx, double fy) {
-
-	}
+	Scaled(Shape_ptr shape, double fx, double fy);
 	double getScaleX() const noexcept;
 	double getScaleY() const noexcept;
+	//Shape_ptr getShape() const noexcept
 	string getPostScript() const override;
-
 private:
 	double _fx;
 	double _fy;
@@ -103,6 +101,7 @@ private:
 
 class Layered : public Shape {
 	Layered(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
+	
 	string getPostScript() const override;
 };
 
