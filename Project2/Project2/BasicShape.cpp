@@ -37,4 +37,55 @@ std::string Circle::getPostScript() const
 }
 
 
+
 // Polygon Class
+
+////////////////
+
+
+
+// Rectangle Class
+Rectangle::Rectangle(double width, double height)
+{
+	_width = width;
+	_height = height;
+}
+
+double Rectangle::getHeight() const noexcept
+{
+	return _height;
+}
+
+double Rectangle::getWidth() const noexcept
+{
+	return _width;
+}
+
+std::string Rectangle::getPostScript() const
+{
+	return std::string("newpath 0 0 moveto 0 " + std::to_string(_height) + " lineto " + std::to_string(_width) + " 0 lineto 0 " + std::to_string(-_height) + " lineto closepath stroke\n");
+}
+
+
+
+// Spacer Class
+Spacer::Spacer(double width, double height)
+{
+	_width = width;
+	_height = height;
+}
+
+double Spacer::getHeight() const noexcept
+{
+	return _height;
+}
+
+double Spacer::getWidth() const noexcept
+{
+	return _width;
+}
+
+std::string Spacer::getPostScript() const
+{
+	return std::string("255 255 255 setrgbcolor newpath 0 0 moveto 0 " + std::to_string(_height) + " lineto " + std::to_string(_width) + " 0 lineto 0 " + std::to_string(-_height) + " lineto closepath stroke\n");
+}

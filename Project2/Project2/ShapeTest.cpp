@@ -47,3 +47,73 @@ TEST_CASE("Circle(double radius)") {
 
 }
 
+TEST_CASE("Rectangle(double height, double width)") {
+	Rectangle r0(3,4);
+	SECTION("Point")
+	{
+		REQUIRE(r0.getWidth() == 3);
+		REQUIRE(r0.getHeight() == 4);
+		
+	}
+
+	Rectangle r1(3,4);
+	Rectangle r2(5,20);
+	Rectangle r3(100,999);
+	SECTION("Single-Parameter Constructor")
+	{
+		REQUIRE(r1.getWidth() == 3);
+		REQUIRE(r1.getHeight() == 4);
+
+		REQUIRE(r2.getWidth() == 5);
+		REQUIRE(r2.getHeight() == 20);
+
+		REQUIRE(r3.getWidth() == 100);
+		REQUIRE(r3.getHeight() == 999);
+	}
+	SECTION("PostScript Drawing")
+	{
+		string testC1 = "newpath 0 0 moveto 0 4 lineto 3 0 lineto 0 -4 lineto closepath stroke\n";
+		string testC2 = "newpath 0 0 moveto 0 20 lineto 5 0 lineto 0 -20 lineto closepath stroke\n";
+		string testC3 = "newpath 0 0 moveto 0 999 lineto 100 0 lineto 0 999 lineto closepath stroke\n";
+		REQUIRE(r1.getPostScript() == testC1);
+		REQUIRE(r2.getPostScript() == testC2);
+		REQUIRE(r3.getPostScript() == testC3);
+	}
+
+}
+
+TEST_CASE("Spacer(double height, double width)") {
+	Spacer r0(3,4);
+	SECTION("Point")
+	{
+		REQUIRE(r0.getWidth() == 3);
+		REQUIRE(r0.getHeight() == 4);
+		
+	}
+
+	Spacer r1(3,4);
+	Spacer r2(5,20);
+	Spacer r3(100,999);
+	SECTION("Single-Parameter Constructor")
+	{
+		REQUIRE(r1.getWidth() == 3);
+		REQUIRE(r1.getHeight() == 4);
+
+		REQUIRE(r2.getWidth() == 5);
+		REQUIRE(r2.getHeight() == 20);
+
+		REQUIRE(r3.getWidth() == 100);
+		REQUIRE(r3.getHeight() == 999);
+	}
+	SECTION("PostScript Drawing")
+	{
+		string testC1 = "255 255 255 setrgbcolor newpath 0 0 moveto 0 4 lineto 3 0 lineto 0 -4 lineto closepath stroke\n";
+		string testC2 = "255 255 255 setrgbcolor newpath 0 0 moveto 0 20 lineto 5 0 lineto 0 -20 lineto closepath stroke\n";
+		string testC3 = "255 255 255 setrgbcolor newpath 0 0 moveto 0 999 lineto 100 0 lineto 0 999 lineto closepath stroke\n";
+		REQUIRE(r1.getPostScript() == testC1);
+		REQUIRE(r2.getPostScript() == testC2);
+		REQUIRE(r3.getPostScript() == testC3);
+	}
+
+}
+

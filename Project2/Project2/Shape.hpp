@@ -36,7 +36,7 @@ private:
 
 class Rectangle : public Shape {
 public:
-	Rectangle(double _height, double _width);
+	Rectangle(double _width, double _height);
 
 	double getHeight() const noexcept;
 	double getWidth() const noexcept;
@@ -51,10 +51,10 @@ private:
 class Spacer // : public Shape //A Shape?? 
 { 
 	public:
-	Spacer( double _height, double _width);
+	Spacer( double _width, double _height);
 
-	double getHeight() const noexcept;
 	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 
 	std::string getPostScript() const;
 
