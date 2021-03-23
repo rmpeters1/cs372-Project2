@@ -34,4 +34,33 @@ private:
 	// unique_ptr<DrawCircleStrategy> drawing; 
 };
 
+class Rectangle : public Shape {
+public:
+	Rectangle(double _height, double _width);
+
+	double getHeight() const noexcept;
+	double getWidth() const noexcept;
+
+	std::string getPostScript() const override;
+
+private:
+	double _height;
+	double _width;
+};
+
+class Spacer // : public Shape //A Shape?? 
+{ 
+	public:
+	Spacer( double _height, double _width);
+
+	double getHeight() const noexcept;
+	double getWidth() const noexcept;
+
+	std::string getPostScript() const;
+
+private:
+	double _height;
+	double _width;
+};
+
 #endif //!SHAPE_HPP
