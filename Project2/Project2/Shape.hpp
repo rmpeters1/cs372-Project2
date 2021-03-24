@@ -95,8 +95,8 @@ private:
 
 class Rotated : public Shape {
 public:
-	Rotated(std::shared_ptr<Shape> shape, int rotationAngle) : _shape(shape), _rotationAngle(rotationAngle)
-	{};
+	Rotated(std::shared_ptr<Shape> shape, int rotationAngle) : _shape(*shape), _rotationAngle(rotationAngle)
+	{}
 	double getWidth() const noexcept;
 	double getHeight() const noexcept;
 	string getPostScript() const override;
