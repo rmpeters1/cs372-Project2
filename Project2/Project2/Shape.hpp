@@ -53,13 +53,11 @@ private:
 
 class Triangle : public Polygon {
 public:
-public:
 	explicit Triangle(double sideLength) :Polygon(3, sideLength) {};
 	~Triangle() override = default;
 };
 
 class Square : public Polygon {
-public:
 public:
 	explicit Square(double sideLength) :Polygon(4, sideLength) {};
 	~Square() override = default;
@@ -95,12 +93,19 @@ private:
 	double _width;
 };
 
-
-/*class Rotated : public Shape {
-	Rotated(Shape_ptr shape, RotationAngle angle);
+class Rotated : public Shape {
+public:
+	Rotated(std::shared_ptr<Shape> shape, int rotationAngle) : _shape(shape), _rotationAngle(rotationAngle)
+	{};
+	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 	string getPostScript() const override;
 private:
-};*/
+	double _height;
+	double _width;
+	Shape& _shape;
+	int _rotationAngle;
+};
 
 class Scaled : public Shape {
 	Scaled(Shape_ptr shape, double fx, double fy);
