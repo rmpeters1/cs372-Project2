@@ -33,7 +33,7 @@ double Circle::getHeight() const noexcept
 
 std::string Circle::getPostScript() const
 {
-	return std::string("0 0 " + std::to_string(_radius) + " 0 360 arc stroke\n");
+	return std::string("100 100 " + std::to_string(_radius) + " 0 360 arc stroke\n");
 }
 
 
@@ -76,8 +76,7 @@ std::string Polygon::getPostScript() const
 	return std::string("/length " + std::to_string(_sideLength) + " def\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
-		+ std::to_string(_width / 2) + " " + std::to_string(_height / 2)
-		+ " translate\n" + "newpath\n" + "0 0 moveto\n"
+		+ "newpath\n" + "0 0 moveto\n"
 		+ "0 angle 360 {\n" + "length 0 lineto\n"
 		+ "length 0 translate\n" + "angle rotate\n" + "} for\n"
 		+ "closepath\n" + "stroke\n" + "grestore\n");
