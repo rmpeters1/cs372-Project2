@@ -40,9 +40,9 @@ TEST_CASE("Circle") {
 	}
 	SECTION("PostScript Drawing")
 	{
-		string testC1 = "0 0 10.000000 0 360 arc stroke\n";
-		string testC2 = "0 0 3.140000 0 360 arc stroke\n";
-		string testC3 = "0 0 19971129.000000 0 360 arc stroke\n";
+		string testC1 = "100 100 10.000000 0 360 arc stroke\n";
+		string testC2 = "100 100 3.140000 0 360 arc stroke\n";
+		string testC3 = "100 100 19971129.000000 0 360 arc stroke\n";
 		REQUIRE(c2.getPostScript() == testC1);
 		REQUIRE(c3.getPostScript() == testC2);
 		REQUIRE(c4.getPostScript() == testC3);
@@ -64,7 +64,6 @@ TEST_CASE("Polygon") {
 			"/nSides 3 def\n" \
 			"/angle { 360 nSides div } def\n" \
 			"gsave\n" \
-			"25.000000 21.650634 translate\n"
 			"newpath\n" \
 			"0 0 moveto\n" \
 			"0 angle 360 {\n" \
@@ -90,7 +89,6 @@ TEST_CASE("Polygon") {
 			"/nSides 4 def\n" \
 			"/angle { 360 nSides div } def\n" \
 			"gsave\n" \
-			"25.000000 25.000000 translate\n"
 			"newpath\n" \
 			"0 0 moveto\n" \
 			"0 angle 360 {\n" \
