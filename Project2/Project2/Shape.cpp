@@ -71,7 +71,7 @@ double Polygon::getHeight() const noexcept
 
 std::string Polygon::getPostScript() const
 {
-	return std::string("%Polygon\n" /length " + std::to_string(_sideLength) + " def\n"
+	return std::string("%Polygon\n /length " + std::to_string(_sideLength) + " def\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
 		+ "newpath\n" + "0 0 moveto\n"
