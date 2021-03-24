@@ -8,8 +8,6 @@ using std::cos;
 using std::sin;
 
 #include "shape.hpp"
-#include <string>
-using std::string;
 #include <algorithm>
 #include <random>
 #include <functional>
@@ -131,9 +129,7 @@ double Spacer::getWidth() const noexcept
 
 std::string Spacer::getPostScript() const
 {
-	return std::string("%Spacer\n 255 255 255 setrgbcolor\n newpath\n 50 50 moveto\n 0 "
-		+ std::to_string(_height) + " rlineto\n " + std::to_string(_width)
-		+ " 0 rlineto\n 0 " + std::to_string(-_height) + " rlineto\n closepath\n stroke\n 0 0 0 setrgbcolor \n\n");
+	return std::string("%Spacer\n" + std::to_string(_width) + " " + std::to_string(_height) + " translate\n");
 }
 
 
@@ -159,8 +155,8 @@ double Scaled::getScaleY() const noexcept
 string Scaled::getPostScript() const
 {
 	return std::string("gsave\n  " + std::to_string(_fx) + " "
-		+ std::to_string(_fy) + " scale\n  " + _shape->getPostScript() 
-		+ " grestore" );
+		+ std::to_string(_fy) + " scale\n  " + _shape->getPostScript()
+		+ " grestore");
 }
 
 
@@ -187,7 +183,7 @@ string Rotated::getPostScript() const
 
 
 // Translate class
-Translate::Translate(int x, int y)
+/*Translate::Translate(int x, int y)
 {
 	x_trans = x;
 	y_trans = y;
@@ -203,7 +199,7 @@ double Translate::getTranslateY() const noexcept
 string Translate::getPostScript() const
 {
 	return std::string(" " + std::to_string(getTranslateX()) + " " + std::to_string(getTranslateY()) + " translate\n \n");
-}
+}*/
 
 /*
 // Layering function
@@ -211,9 +207,7 @@ Layered::Layered(int num_shapes, ...)
 {
 	va_start(valist, num_shapes);
 }
-
 string Layered::getPostScript() const
 {
-
 }
 */
