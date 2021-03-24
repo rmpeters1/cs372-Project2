@@ -53,13 +53,11 @@ private:
 
 class Triangle : public Polygon {
 public:
-public:
 	explicit Triangle(double sideLength) :Polygon(3, sideLength) {};
 	~Triangle() override = default;
 };
 
 class Square : public Polygon {
-public:
 public:
 	explicit Square(double sideLength) :Polygon(4, sideLength) {};
 	~Square() override = default;
@@ -77,7 +75,6 @@ public:
 private:
 	double _height;
 	double _width;
-
 };
 
 class Spacer : public Shape
@@ -95,13 +92,6 @@ private:
 	double _width;
 };
 
-
-/*class Rotated : public Shape {
-	Rotated(Shape_ptr shape, RotationAngle angle);
-	string getPostScript() const override;
-private:
-};*/
-
 class Scaled : public Shape {
 	Scaled(Shape_ptr shape, double fx, double fy);
 	double getScaleX() const noexcept;
@@ -111,6 +101,17 @@ class Scaled : public Shape {
 private:
 	double _fx;
 	double _fy;
+	Shape_ptr _shape;
+};
+
+class Rotated : public Shape {
+	Rotated(Shape_ptr shape, double rotationAngle);
+
+	int getRotationAngle() const noexcept;
+	string getPostScript() const override;
+
+private:
+	double _theta;
 	Shape_ptr _shape;
 };
 
