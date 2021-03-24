@@ -2,7 +2,7 @@
 // Hunter Barndt, Yali Wang, Rose Peters
 
 #include <sstream>
-using std::stringstream;
+using std::string;
 #include <cmath>
 using std::cos;
 using std::sin;
@@ -31,7 +31,7 @@ double Circle::getHeight() const noexcept
 
 std::string Circle::getPostScript() const
 {
-	return std::string("%Circle\n 0 0 " + std::to_string(_radius) + " 0 360 arc stroke\n\n");
+	return std::string("%Circle\n 100 100 " + std::to_string(_radius) + " 0 360 arc stroke\n\n");
 }
 
 
@@ -74,7 +74,7 @@ std::string Polygon::getPostScript() const
 	return std::string("%Polygon\n /length " + std::to_string(_sideLength) + " def\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
-		+ "newpath\n" + "0 0 moveto\n"
+		+ "newpath\n" + "300 300 moveto\n"
 		+ "0 angle 360 {\n" + "length 0 lineto\n"
 		+ "length 0 translate\n" + "angle rotate\n" + "} for\n"
 		+ "closepath\n" + "stroke\n" + "grestore\n");
@@ -102,7 +102,7 @@ double Rectangle::getWidth() const noexcept
 
 std::string Rectangle::getPostScript() const
 {
-	return std::string("%Rectangle\n newpath \n 0 0 moveto\n 0 " + std::to_string(_height)
+	return std::string("%Rectangle\n newpath \n 200 200 moveto\n 0 " + std::to_string(_height)
 		+ " rlineto\n " + std::to_string(_width) + " 0 rlineto\n 0 "
 		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n \n");
 }
