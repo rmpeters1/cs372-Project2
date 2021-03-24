@@ -14,18 +14,19 @@ const float pi = 3.14159265359;
 
 class Shape {
 public:
-	using Shape_ptr = std::unique_ptr<Shape>;
+	using Shape_ptr = std::shared_ptr<Shape>;
 	virtual ~Shape() = default;
 	virtual std::string getPostScript() const = 0;
-
+	virtual double getWidth() const = 0;
+	virtual double getHeight() const = 0;
 };
 
 class Circle : public Shape {
 public:
 	Circle(double rad);
 
-	double getWidth() const noexcept;
-	double getHeight() const noexcept;
+	double getWidth() const noexcept override;
+	double getHeight() const noexcept override;
 
 	std::string getPostScript() const override;
 
@@ -39,8 +40,8 @@ private:
 class Polygon : public Shape {
 public:
 	Polygon(int numSides, double sideLength);
-	double getWidth() const noexcept;
-	double getHeight() const noexcept;
+	double getWidth() const noexcept override;
+	double getHeight() const noexcept override;
 	std::string getPostScript() const override;
 
 private:
@@ -67,8 +68,8 @@ class Rectangle : public Shape {
 public:
 	Rectangle(double _width, double _height);
 
-	double getHeight() const noexcept;
-	double getWidth() const noexcept;
+	double getHeight() const noexcept override;
+	double getWidth() const noexcept override;
 
 	std::string getPostScript() const override;
 
@@ -82,8 +83,8 @@ class Spacer : public Shape
 public:
 	Spacer(double _width, double _height);
 
-	double getWidth() const noexcept;
-	double getHeight() const noexcept;
+	double getWidth() const noexcept override;
+	double getHeight() const noexcept override;
 
 	std::string getPostScript() const;
 
@@ -92,7 +93,8 @@ private:
 	double _width;
 };
 
-class Scaled : public Shape {
+class Scaled : public Shape
+{
 	Scaled(Shape_ptr shape, double fx, double fy);
 	double getScaleX() const noexcept;
 	double getScaleY() const noexcept;
@@ -104,15 +106,15 @@ private:
 	Shape_ptr _shape;
 };
 
-class Rotated : public Shape {
-	Rotated(Shape_ptr shape, double rotationAngle);
-
+class Rotated : public Shape
+{
+public:
+	Rotated(Shape_ptr shape, int rotationAngle);
 	int getRotationAngle() const noexcept;
 	string getPostScript() const override;
-
 private:
-	double _theta;
 	Shape_ptr _shape;
+	int _rotationAngle;
 };
 
 //class Layered : public Shape {
