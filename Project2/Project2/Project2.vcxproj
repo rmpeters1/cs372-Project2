@@ -143,6 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BasicShape.cpp" />
+    <ClCompile Include="draw.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shapes.ps" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

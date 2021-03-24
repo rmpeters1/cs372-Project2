@@ -23,5 +23,13 @@
     <ClCompile Include="BasicShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shapes.ps">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
