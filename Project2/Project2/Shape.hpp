@@ -128,7 +128,7 @@ public:
 private:
 	double x_trans;
 	double y_trans;
-}
+};
 /*
 class Layered : public Shape {
 public:
