@@ -65,7 +65,7 @@ TEST_CASE("Polygon") {
 			"/angle { 360 nSides div } def\n" \
 			"gsave\n" \
 			"newpath\n" \
-			"0 0 moveto\n" \
+			"300 300 moveto\n" \
 			"0 angle 360 {\n" \
 			"length 0 lineto\n" \
 			"length 0 translate\n" \
@@ -90,7 +90,7 @@ TEST_CASE("Polygon") {
 			"/angle { 360 nSides div } def\n" \
 			"gsave\n" \
 			"newpath\n" \
-			"0 0 moveto\n" \
+			"300 300 moveto\n" \
 			"0 angle 360 {\n" \
 			"length 0 lineto\n" \
 			"length 0 translate\n" \
@@ -127,9 +127,9 @@ TEST_CASE("Rectangle") {
 	}
 	SECTION("Rectangle Drawing")
 	{
-		string testC1 = "newpath \n 0 0 moveto\n 0 4.000000 lineto\n 3.000000 0 lineto\n 0 -4.000000 lineto\n closepath\n stroke\n";
-		string testC2 = "newpath \n 0 0 moveto\n 0 20.000000 lineto\n 5.000000 0 lineto\n 0 -20.000000 lineto\n closepath\n stroke\n";
-		string testC3 = "newpath \n 0 0 moveto\n 0 999.000000 lineto\n 100.000000 0 lineto\n 0 -999.000000 lineto\n closepath\n stroke\n";
+		string testC1 = "newpath \n 200 200 moveto\n 0 4.000000 lineto\n 3.000000 0 lineto\n 0 -4.000000 lineto\n closepath\n stroke\n";
+		string testC2 = "newpath \n 200 200 moveto\n 0 20.000000 lineto\n 5.000000 0 lineto\n 0 -20.000000 lineto\n closepath\n stroke\n";
+		string testC3 = "newpath \n 200 200 moveto\n 0 999.000000 lineto\n 100.000000 0 lineto\n 0 -999.000000 lineto\n closepath\n stroke\n";
 		REQUIRE(r1.getPostScript() == testC1);
 		REQUIRE(r2.getPostScript() == testC2);
 		REQUIRE(r3.getPostScript() == testC3);
