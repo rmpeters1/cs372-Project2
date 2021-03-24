@@ -9,6 +9,7 @@
 using std::unique_ptr;
 #include <string>
 using std::string;
+#include <stdarg.h>
 
 const float pi = 3.14159265359;
 
@@ -117,11 +118,15 @@ private:
 	int _rotationAngle;
 };
 
-//class Layered : public Shape {
-//	Layered(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
-//
-//	string getPostScript() const override;
-//};
+/*
+class Layered : public Shape {
+public:
+	Layered(int num_shapes, ...);
+	string getPostScript() const override;
+private:
+	va_list valist;
+};
+*/
 
 //class Vertical : public Shape {
 //	Vertical(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);

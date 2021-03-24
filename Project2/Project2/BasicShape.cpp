@@ -33,7 +33,7 @@ double Circle::getHeight() const noexcept
 
 std::string Circle::getPostScript() const
 {
-	return std::string("0 0 " + std::to_string(_radius) + " 0 360 arc stroke\n");
+	return std::string("%Circle\n 0 0 " + std::to_string(_radius) + " 0 360 arc stroke\n\n");
 }
 
 
@@ -73,7 +73,7 @@ double Polygon::getHeight() const noexcept
 
 std::string Polygon::getPostScript() const
 {
-	return std::string("/length " + std::to_string(_sideLength) + " def\n"
+	return std::string("%Polygon\n /length " + std::to_string(_sideLength) + " def\n\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
 		+ std::to_string(_width / 2) + " " + std::to_string(_height / 2)
@@ -105,7 +105,7 @@ double Rectangle::getWidth() const noexcept
 
 std::string Rectangle::getPostScript() const
 {
-	return std::string("newpath \n 0 0 moveto\n 0 " + std::to_string(_height)
+	return std::string("%Rectangle\n newpath \n 0 0 moveto\n 0 " + std::to_string(_height)
 		+ " rlineto\n " + std::to_string(_width) + " 0 rlineto\n 0 "
 		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n");
 }
@@ -131,9 +131,9 @@ double Spacer::getWidth() const noexcept
 
 std::string Spacer::getPostScript() const
 {
-	return std::string("255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 "
+	return std::string("%Spacer\n 255 255 255 setrgbcolor\n newpath\n 50 50 moveto\n 0 "
 		+ std::to_string(_height) + " rlineto\n " + std::to_string(_width)
-		+ " 0 rlineto\n 0 " + std::to_string(-_height) + " rlineto\n closepath\n stroke\n");
+		+ " 0 rlineto\n 0 " + std::to_string(-_height) + " rlineto\n closepath\n stroke\n 0 0 0 setrgbcolor \n\n");
 }
 
 
@@ -158,7 +158,9 @@ double Scaled::getScaleY() const noexcept
 
 string Scaled::getPostScript() const
 {
-	return std::string(/*_shape*/ +" " + std::to_string(_fx) + " " + std::to_string(_fy) + " scale \n");
+	return std::string("gsave\n  " + std::to_string(_fx) + " "
+		+ std::to_string(_fy) + " scale\n  " + _shape->getPostScript() 
+		+ " grestore" );
 }
 
 
@@ -181,3 +183,17 @@ string Rotated::getPostScript() const
 		std::to_string(_shape->getWidth() / 2) + " -" + std::to_string(_shape->getHeight() / 2) +
 		" newpath\n moveto\n " + _shape->getPostScript() + "   grestore\n } for\n");
 }
+
+
+/*
+// Layering function
+Layered::Layered(int num_shapes, ...)
+{
+	va_start(valist, num_shapes);
+}
+
+string Layered::getPostScript() const
+{
+
+}
+*/
