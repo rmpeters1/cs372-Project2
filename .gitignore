@@ -2,5 +2,24 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Project2/.vs/Project2/v16/Browse.VC.opendb
+*.opendb
 *.json
+*.db
+*.suo
+*.obj
+*.sqlite
+*.db-shm
+*.db-wal
+*.ipch
+*.pdb
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.exe
+*.exe.recipe
+*.idb
+*.tlog
+*.lastbuildstate
+*.log
+*.VC.db
+*.VC.db-shm
