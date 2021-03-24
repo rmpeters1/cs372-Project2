@@ -118,7 +118,7 @@ private:
 	int _rotationAngle;
 };
 
-class Translate
+/*class Translate
 {
 public:
 	Translate(int x, int y);
@@ -128,7 +128,9 @@ public:
 private:
 	double x_trans;
 	double y_trans;
-};
+};*/
+
+
 /*
 class Layered : public Shape {
 public:
