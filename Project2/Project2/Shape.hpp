@@ -118,6 +118,17 @@ private:
 	int _rotationAngle;
 };
 
+class Translate
+{
+public:
+	Translate(int x, int y);
+	double getTranslateX() const noexcept;
+	double getTranslateY() const noexcept;
+	string getPostScript() const;
+private:
+	double x_trans;
+	double y_trans;
+}
 /*
 class Layered : public Shape {
 public:

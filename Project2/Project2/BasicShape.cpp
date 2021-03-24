@@ -73,7 +73,7 @@ double Polygon::getHeight() const noexcept
 
 std::string Polygon::getPostScript() const
 {
-	return std::string("%Polygon\n /length " + std::to_string(_sideLength) + " def\n\n"
+	return std::string("%Polygon\n/length " + std::to_string(_sideLength) + " def\n\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
 		+ std::to_string(_width / 2) + " " + std::to_string(_height / 2)
@@ -107,7 +107,7 @@ std::string Rectangle::getPostScript() const
 {
 	return std::string("%Rectangle\n newpath \n 0 0 moveto\n 0 " + std::to_string(_height)
 		+ " rlineto\n " + std::to_string(_width) + " 0 rlineto\n 0 "
-		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n");
+		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n \n");
 }
 
 
@@ -184,6 +184,26 @@ string Rotated::getPostScript() const
 		" newpath\n moveto\n " + _shape->getPostScript() + "   grestore\n } for\n");
 }
 
+
+
+// Translate class
+Translate::Translate(int x, int y)
+{
+	x_trans = x;
+	y_trans = y;
+}
+double Translate::getTranslateX() const noexcept
+{
+	return x_trans;
+}
+double Translate::getTranslateY() const noexcept
+{
+	return y_trans;
+}
+string Translate::getPostScript() const
+{
+	return std::string(" " + std::to_string(getTranslateX()) + " " + std::to_string(getTranslateY()) + " translate\n \n");
+}
 
 /*
 // Layering function

@@ -2,22 +2,40 @@
  0 0 50.000000 0 360 arc stroke
 
 %Spacer
-255 255 255 setrgbcolor
+ 255 255 255 setrgbcolor
  newpath
- 0 0 moveto
+ 50 50 moveto
  0 50.000000 rlineto
  50.000000 0 rlineto
  0 -50.000000 rlineto
  closepath
  stroke
+ 0 0 0 setrgbcolor 
 
 %Rectangle
-newpath 
+ newpath 
  0 0 moveto
  0 50.000000 rlineto
  50.000000 0 rlineto
  0 -50.000000 rlineto
  closepath
  stroke
+ 
+%Polygon
+/length 50.000000 def
 
+/nSides 5 def
+/angle { 360 nSides div } def
+gsave
+40.450851 38.471045 translate
+newpath
+0 0 moveto
+0 angle 360 {
+length 0 rlineto
+length 0 translate
+angle rotate
+} for
+closepath
+stroke
+grestore
 showpage
