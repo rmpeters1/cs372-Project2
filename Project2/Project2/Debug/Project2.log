@@ -1,3 +1,3 @@
-﻿  draw.cpp
-C:\Users\RBeet\source\repos\cs372-Project2\Project2\Project2\Shape.hpp(13,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  BasicShape.cpp
+C:\Users\RBeet\source\repos\cs372-Project2\Project2\Project2\shape.hpp(13,31): warning C4305: 'initializing': truncation from 'double' to 'float'
   Project2.vcxproj -> C:\Users\RBeet\source\repos\cs372-Project2\Project2\Debug\Project2.exe

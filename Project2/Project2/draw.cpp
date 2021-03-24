@@ -16,7 +16,7 @@ int main() {
 	Rectangle r1(50, 50);
 	std::ofstream psfile;
 	psfile.open("shape.ps");
-	psfile << c1.getPostScript() << endl << s1.getPostScript();
+	psfile << c1.getPostScript() << s1.getPostScript();
 	psfile << r1.getPostScript();
 	psfile << std::endl << "showpage";
 
