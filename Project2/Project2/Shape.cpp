@@ -1,4 +1,4 @@
-// BasicShape.cpp
+// Shape.cpp
 // Hunter Barndt, Yali Wang, Rose Peters
 
 #include <sstream>
@@ -8,8 +8,6 @@ using std::cos;
 using std::sin;
 
 #include "shape.hpp"
-#include <string>
-using std::string;
 #include <algorithm>
 #include <random>
 #include <functional>
@@ -33,7 +31,7 @@ double Circle::getHeight() const noexcept
 
 std::string Circle::getPostScript() const
 {
-	return std::string("100 100 " + std::to_string(_radius) + " 0 360 arc stroke\n");
+	return std::string("%Circle\n 0 0 " + std::to_string(_radius) + " 0 360 arc stroke\n\n");
 }
 
 
@@ -53,7 +51,7 @@ Polygon::Polygon(int numSides, double sideLength)
 	{
 		_height = sideLength * (cos(pi / numSides)) / (sin(pi / numSides));
 		_width = (sideLength * (cos(pi / numSides)) / (sin(pi / numSides)));
-		
+
 	}
 	else
 	{
@@ -73,7 +71,7 @@ double Polygon::getHeight() const noexcept
 
 std::string Polygon::getPostScript() const
 {
-	return std::string("/length " + std::to_string(_sideLength) + " def\n"
+	return std::string("%Polygon\n" /length " + std::to_string(_sideLength) + " def\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
 		+ "newpath\n" + "0 0 moveto\n"
@@ -104,9 +102,9 @@ double Rectangle::getWidth() const noexcept
 
 std::string Rectangle::getPostScript() const
 {
-	return std::string("newpath \n 0 0 moveto\n 0 " + std::to_string(_height) 
-		+ " lineto\n " + std::to_string(_width) + " 0 lineto\n 0 " 
-		+ std::to_string(-_height) + " lineto\n closepath\n stroke\n");
+	return std::string("%Rectangle\n newpath \n 0 0 moveto\n 0 " + std::to_string(_height)
+		+ " rlineto\n " + std::to_string(_width) + " 0 rlineto\n 0 "
+		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n \n");
 }
 
 
@@ -130,53 +128,88 @@ double Spacer::getWidth() const noexcept
 
 std::string Spacer::getPostScript() const
 {
-	return std::string("255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 " 
-		+ std::to_string(_height) + " lineto\n " + std::to_string(_width) 
-		+ " 0 lineto\n 0 " + std::to_string(-_height) + " lineto\n closepath\n stroke\n");
+	/*return std::string("255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 "
+		+ std::to_string(_height) + " lineto\n " + std::to_string(_width)
+		+ " 0 lineto\n 0 " + std::to_string(-_height) + " lineto\n closepath\n stroke\n");*/
+	return std::string("%Spacer\n" + std::to_string(_width) + " " + std::to_string(_height) + " translate\n");
 }
 
 
 
 // Scaling function
-Scaled::Scaled(Shape_ptr shape, double fx, double fy) 
+Scaled::Scaled(Shape_ptr shape, double fx, double fy)
 {
-
 	_fx = fx;
 	_fy = fy;
-	//_shape = std::move(shape);
-
+	_shape = shape;
 }
 
-double Scaled::getScaleX() const noexcept 
+double Scaled::getScaleX() const noexcept
 {
 	return _fx;
 }
 
-double Scaled::getScaleY() const noexcept 
+double Scaled::getScaleY() const noexcept
 {
 	return _fy;
 }
 
-string Scaled::getPostScript() const 
+string Scaled::getPostScript() const
 {
-	return std::string(/*_shape*/ +" " + std::to_string(_fx) + " " + std::to_string(_fy) + " scale \n");
+	return std::string("gsave\n  " + std::to_string(_fx) + " "
+		+ std::to_string(_fy) + " scale\n  " + _shape->getPostScript()
+		+ " grestore");
 }
 
 
 
 // Rotation function
-Rotated::Rotated(Shape_ptr shape, double rotationAngle)
+Rotated::Rotated(Shape_ptr shape, int rotationAngle)
 {
-	_theta = rotationAngle;
-	//_shape = std::move(shape);
+	_rotationAngle = rotationAngle;
+	_shape = shape;
 }
 
 int Rotated::getRotationAngle() const noexcept
 {
-	return _theta;
+	return _rotationAngle;
 }
 
-string Rotated::getPostScript() const 
+string Rotated::getPostScript() const
 {
-	return std::string(/*_shape*/ +" " + std::to_string(_fx) + " " + std::to_string(_fy) + " scale \n");
+	return std::string("0 10 360 {\n   newpath\n   gsave\n     rotate\n     -" +
+		std::to_string(_shape->getWidth() / 2) + " -" + std::to_string(_shape->getHeight() / 2) +
+		" newpath\n moveto\n " + _shape->getPostScript() + "   grestore\n } for\n");
 }
+
+
+
+// Translate class
+/*Translate::Translate(int x, int y)
+{
+	x_trans = x;
+	y_trans = y;
+}
+double Translate::getTranslateX() const noexcept
+{
+	return x_trans;
+}
+double Translate::getTranslateY() const noexcept
+{
+	return y_trans;
+}
+string Translate::getPostScript() const
+{
+	return std::string(" " + std::to_string(getTranslateX()) + " " + std::to_string(getTranslateY()) + " translate\n \n");
+}*/
+
+/*
+// Layering function
+Layered::Layered(int num_shapes, ...)
+{
+	va_start(valist, num_shapes);
+}
+string Layered::getPostScript() const
+{
+}
+*/
