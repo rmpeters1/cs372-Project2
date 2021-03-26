@@ -219,3 +219,41 @@ TEST_CASE("Rotated") {
 	}
 }
 
+
+TEST_CASE("Scaled") {
+	SECTION("Zoom in a triangle")
+	{
+		Triangle t1(20);
+		ScaledShape sc1(std::make_unique<Triangle>(20), 3.0, 1.0);
+		REQUIRE(sc1.getWidth() == t1.getWidth() * 3.0);
+		REQUIRE(sc1.getHeight() == t1.getHeight() * 1.0);
+
+		string testSC1 = "gsave\n3.000000 "
+			"1.000000 scale\n%Polygon\n/length 20.000000 def\n"
+			"/nSides 3 def\n"
+			"/angle { 360 nSides div } def\n"
+			"gsave\n"
+			"newpath\n"
+			"300 300 moveto\n"
+			"0 angle 360 {\n"
+			"length 0 lineto\n"
+			"length 0 translate\n"
+			"angle rotate\n"
+			"} for\n"
+			"closepath\n"
+			"stroke\n"
+			"grestore\ngrestore\n";
+		REQUIRE(sc1.getPostScript() == testSC1);
+	}
+	SECTION("Zoom out a circle (and make an eclipse)")
+	{
+		Circle c1(40);
+		ScaledShape sc2(std::make_unique<Circle>(40), 0.5, 0.8);
+		REQUIRE(sc2.getWidth() == c1.getWidth() * 0.5);
+		REQUIRE(sc2.getHeight() == c1.getHeight() * 0.8);
+
+		string testSC1 = "gsave\n0.500000 "
+			"0.800000 scale\n%Circle\n 100 100 40.000000 0 360 arc stroke\n\n"
+			"grestore\ngrestore\n";
+	}
+}

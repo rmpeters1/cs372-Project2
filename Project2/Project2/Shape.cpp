@@ -71,7 +71,7 @@ double Polygon::getHeight() const noexcept
 
 std::string Polygon::getPostScript() const
 {
-	return std::string("%Polygon\n /length " + std::to_string(_sideLength) + " def\n"
+	return std::string("%Polygon\n/length " + std::to_string(_sideLength) + " def\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
 		+ "newpath\n" + "300 300 moveto\n"
@@ -103,7 +103,7 @@ std::string Rectangle::getPostScript() const
 {
 	return std::string("%Rectangle\n newpath \n 200 200 moveto\n 0 " + std::to_string(_height)
 		+ " rlineto\n " + std::to_string(_width) + " 0 rlineto\n 0 "
-		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n \n");
+		+ std::to_string(-_height) + " rlineto\n closepath\n stroke\n\n");
 }
 
 
@@ -140,23 +140,25 @@ ScaledShape::ScaledShape(Shape_ptr shape, double fx, double fy)
 	_fx = fx;
 	_fy = fy;
 	_shape = shape;
+	_width = _fx * shape->getWidth();
+	_height = _fy * shape->getHeight();
 }
 
-double ScaledShape::getScaleX() const noexcept
+double ScaledShape::getWidth() const noexcept
 {
-	return _fx;
+	return _width;
 }
 
-double ScaledShape::getScaleY() const noexcept
+double ScaledShape::getHeight() const noexcept
 {
-	return _fy;
+	return _height;
 }
 
 string ScaledShape::getPostScript() const
 {
-	return std::string("gsave\n  " + std::to_string(_fx) + " "
-		+ std::to_string(_fy) + " scale\n  " + _shape->getPostScript()
-		+ " grestore");
+	return std::string("gsave\n" + std::to_string(_fx) + " "
+		+ std::to_string(_fy) + " scale\n" + _shape->getPostScript()
+		+ "grestore\n");
 }
 
 
@@ -164,20 +166,37 @@ string ScaledShape::getPostScript() const
 // Rotation function
 RotatedShape::RotatedShape(Shape_ptr shape, int rotationAngle)
 {
+	if (rotationAngle == 90 || rotationAngle == 270)
+	{
+		_height = shape->getWidth();
+		_width = shape->getHeight();
+	}
+	else if (rotationAngle == 180)
+	{
+		_width = shape->getWidth();
+		_height = shape->getHeight();
+	}
+
 	_rotationAngle = rotationAngle;
 	_shape = shape;
 }
 
-int RotatedShape::getRotationAngle() const noexcept
+double RotatedShape::getHeight() const noexcept
 {
-	return _rotationAngle;
+	return _height;
 }
+
+double RotatedShape::getWidth() const noexcept
+{
+	return _width;
+}
+
+
 
 string RotatedShape::getPostScript() const
 {
-	return std::string("0 10 360 {\n   newpath\n   gsave\n     rotate\n     -" +
-		std::to_string(_shape->getWidth() / 2) + " -" + std::to_string(_shape->getHeight() / 2) +
-		" newpath\n moveto\n " + _shape->getPostScript() + "   grestore\n } for\n");
+	return std::string("gsave\n" + std::to_string(_rotationAngle) + " rotate\n"
+		+ _shape->getPostScript() + "grestore\n");
 }
 
 // TranslatedSpace class

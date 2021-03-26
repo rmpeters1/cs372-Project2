@@ -99,14 +99,17 @@ private:
 
 class ScaledShape : public Shape
 {
+public:
 	ScaledShape(Shape_ptr shape, double fx, double fy);
-	double getScaleX() const noexcept;
-	double getScaleY() const noexcept;
+	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 	//Shape_ptr getShape() const noexcept
 	string getPostScript() const override;
 private:
 	double _fx;
 	double _fy;
+	double _width;
+	double _height;
 	Shape_ptr _shape;
 };
 
@@ -114,11 +117,14 @@ class RotatedShape : public Shape
 {
 public:
 	RotatedShape(Shape_ptr shape, int rotationAngle);
-	int getRotationAngle() const noexcept;
+	double getWidth() const noexcept override;
+	double getHeight() const noexcept override;
 	string getPostScript() const override;
 private:
 	Shape_ptr _shape;
 	int _rotationAngle;
+	double _width;
+	double _height;
 };
 
 class TranslatedSpace
