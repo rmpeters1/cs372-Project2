@@ -10,6 +10,8 @@ using std::unique_ptr;
 #include <string>
 using std::string;
 #include <stdarg.h>
+#include<vector>
+using std::vector;
 
 const float pi = 3.14159265359;
 
@@ -17,6 +19,7 @@ class Shape {
 public:
 	using Shape_ptr = std::shared_ptr<Shape>;
 	virtual ~Shape() = default;
+	Shape() = default;
 	virtual std::string getPostScript() const = 0;
 	virtual double getWidth() const = 0;
 	virtual double getHeight() const = 0;
@@ -161,4 +164,9 @@ private:
 //  using StackedShape::StackedShape;
 //	string getPostScript() const override;
 //};
+
+std::string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes);
+
+
+
 #endif //!SHAPE_HPP
