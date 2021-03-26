@@ -16,7 +16,9 @@ int main() {
 	
 
 	//Drawing all shapes
-	psfile << getPostScript(shapes);
+	for (auto const& s : shapes) {
+		psfile << s->getPostScript();
+	}
 
 
 
