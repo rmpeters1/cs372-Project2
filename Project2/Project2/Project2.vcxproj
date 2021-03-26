@@ -142,8 +142,9 @@
     <ClInclude Include="Shape.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BasicShape.cpp" />
     <ClCompile Include="draw.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shapes.ps" />

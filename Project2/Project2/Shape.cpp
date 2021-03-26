@@ -78,7 +78,6 @@ std::string Polygon::getPostScript() const
 		+ "0 angle 360 {\n" + "length 0 lineto\n"
 		+ "length 0 translate\n" + "angle rotate\n" + "} for\n"
 		+ "closepath\n" + "stroke\n" + "grestore\n");
-
 }
 
 
@@ -128,33 +127,32 @@ double Spacer::getWidth() const noexcept
 
 std::string Spacer::getPostScript() const
 {
-	/*return std::string("255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 "
+	return std::string("%Spacer\n 255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 "
 		+ std::to_string(_height) + " lineto\n " + std::to_string(_width)
-		+ " 0 lineto\n 0 " + std::to_string(-_height) + " lineto\n closepath\n stroke\n");*/
-	return std::string("%Spacer\n" + std::to_string(_width) + " " + std::to_string(_height) + " translate\n");
+		+ " 0 lineto\n 0 " + std::to_string(-_height) + " lineto\n closepath\n stroke\n");
 }
 
 
 
 // Scaling function
-Scaled::Scaled(Shape_ptr shape, double fx, double fy)
+ScaledShape::ScaledShape(Shape_ptr shape, double fx, double fy)
 {
 	_fx = fx;
 	_fy = fy;
 	_shape = shape;
 }
 
-double Scaled::getScaleX() const noexcept
+double ScaledShape::getScaleX() const noexcept
 {
 	return _fx;
 }
 
-double Scaled::getScaleY() const noexcept
+double ScaledShape::getScaleY() const noexcept
 {
 	return _fy;
 }
 
-string Scaled::getPostScript() const
+string ScaledShape::getPostScript() const
 {
 	return std::string("gsave\n  " + std::to_string(_fx) + " "
 		+ std::to_string(_fy) + " scale\n  " + _shape->getPostScript()
@@ -164,52 +162,55 @@ string Scaled::getPostScript() const
 
 
 // Rotation function
-Rotated::Rotated(Shape_ptr shape, int rotationAngle)
+RotatedShape::RotatedShape(Shape_ptr shape, int rotationAngle)
 {
 	_rotationAngle = rotationAngle;
 	_shape = shape;
 }
 
-int Rotated::getRotationAngle() const noexcept
+int RotatedShape::getRotationAngle() const noexcept
 {
 	return _rotationAngle;
 }
 
-string Rotated::getPostScript() const
+string RotatedShape::getPostScript() const
 {
 	return std::string("0 10 360 {\n   newpath\n   gsave\n     rotate\n     -" +
 		std::to_string(_shape->getWidth() / 2) + " -" + std::to_string(_shape->getHeight() / 2) +
 		" newpath\n moveto\n " + _shape->getPostScript() + "   grestore\n } for\n");
 }
 
-
-
-// Translate class
-/*Translate::Translate(int x, int y)
+// TranslatedSpace class
+TranslatedSpace::TranslatedSpace(int x, int y)
 {
 	x_trans = x;
 	y_trans = y;
 }
-double Translate::getTranslateX() const noexcept
+double TranslatedSpace::getTranslateX() const noexcept
 {
 	return x_trans;
 }
-double Translate::getTranslateY() const noexcept
+double TranslatedSpace::getTranslateY() const noexcept
 {
 	return y_trans;
 }
-string Translate::getPostScript() const
+string TranslatedSpace::getPostScript() const
 {
-	return std::string(" " + std::to_string(getTranslateX()) + " " + std::to_string(getTranslateY()) + " translate\n \n");
-}*/
+	return std::string("%Translate\n" + std::to_string(x_trans) + " " + std::to_string(y_trans) + " translate\n");
+}
 
-/*
+
+
+// Stacked Shape
+StackedShape::StackedShape(std::vector<Shape_ptr> shapes)
+{
+
+}
+
+
+
 // Layering function
-Layered::Layered(int num_shapes, ...)
+LayeredShape::LayeredShape()
 {
-	va_start(valist, num_shapes);
+
 }
-string Layered::getPostScript() const
-{
-}
-*/

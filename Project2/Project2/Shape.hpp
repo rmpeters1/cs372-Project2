@@ -94,9 +94,9 @@ private:
 	double _width;
 };
 
-class Scaled : public Shape
+class ScaledShape : public Shape
 {
-	Scaled(Shape_ptr shape, double fx, double fy);
+	ScaledShape(Shape_ptr shape, double fx, double fy);
 	double getScaleX() const noexcept;
 	double getScaleY() const noexcept;
 	//Shape_ptr getShape() const noexcept
@@ -107,10 +107,10 @@ private:
 	Shape_ptr _shape;
 };
 
-class Rotated : public Shape
+class RotatedShape : public Shape
 {
 public:
-	Rotated(Shape_ptr shape, int rotationAngle);
+	RotatedShape(Shape_ptr shape, int rotationAngle);
 	int getRotationAngle() const noexcept;
 	string getPostScript() const override;
 private:
@@ -118,36 +118,47 @@ private:
 	int _rotationAngle;
 };
 
-/*class Translate
+class TranslatedSpace
 {
 public:
-	Translate(int x, int y);
+	TranslatedSpace(int x, int y);
 	double getTranslateX() const noexcept;
 	double getTranslateY() const noexcept;
 	string getPostScript() const;
 private:
 	double x_trans;
 	double y_trans;
-};*/
-
-
-/*
-class Layered : public Shape {
-public:
-	Layered(int num_shapes, ...);
-	string getPostScript() const override;
-private:
-	va_list valist;
 };
-*/
 
-//class Vertical : public Shape {
-//	Vertical(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
+
+
+// Stacked Shape
+class StackedShape : public Shape
+{
+public:
+	StackedShape(std::vector<Shape_ptr> shapes);
+private:
+	std::vector<Shape_ptr> _shapes;
+};
+
+
+
+// Layered Shape
+class LayeredShape : public StackedShape {
+public:
+	using StackedShape::StackedShape;
+private:
+};
+
+// Vertical Shape
+//class VerticalShape : public StackedShape {
+//	using StackedShape::StackedShape;
 //	string getPostScript() const override;
 //};
 
-//class Horizontal : public Shape {
-//	Horizontal(Shape_ptr shape, Shape shape2 /*, shape3, ...*/);
+// Horizontal Shape
+//class HorizontalShape : public StackedShape {\
+//  using StackedShape::StackedShape;
 //	string getPostScript() const override;
 //};
 #endif //!SHAPE_HPP

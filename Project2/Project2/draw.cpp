@@ -16,9 +16,10 @@ int main() {
     Polygon p1(5, 50);
     Polygon p2(7, 50);
     Polygon pT(3, 50);
-    Polygon pS(4, 50)
-        ;    Triangle t1(3);
-    //Translate t1(300, 300);
+    Polygon pS(4, 50);
+    Triangle t1(3);
+    //TranslatedSpace t1(300, 300);
+    //StackedShape ss1(c1)
 
     std::ofstream psfile;
     psfile.open("shapes.ps");
