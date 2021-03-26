@@ -202,15 +202,23 @@ string TranslatedSpace::getPostScript() const
 
 
 // Stacked Shape
-StackedShape::StackedShape(std::vector<Shape_ptr> shapes)
+/*StackedShape::StackedShape(std::vector<Shape_ptr> shapes)
 {
 
-}
+}*/
 
 
 
 // Layering function
-LayeredShape::LayeredShape()
+/*LayeredShape::LayeredShape()
 {
 
+}*/
+
+string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes)
+{
+
+	for (auto const& s : shapes) {
+		return s->getPostScript();
+	}
 }
