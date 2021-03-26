@@ -150,29 +150,34 @@ private:
 	std::vector<Shape_ptr> _shapes;
 };
 
-
-
 // Layered Shape
-class LayeredShape : public StackedShape {
+class LayeredShape : public Shape {
 public:
-	using StackedShape::StackedShape;
+	LayeredShape(Shape_ptr shape);
+	string getPostScript() const override;
 private:
+	Shape_ptr _shape;
 };
 
-// Vertical Shape
-//class VerticalShape : public StackedShape {
-//	using StackedShape::StackedShape;
-//	string getPostScript() const override;
-//};
+//Vertical Shape
+class VerticalShape : public Shape {
+public:
+	VerticalShape(Shape_ptr shape);
+	string getPostScript() const override;
+private:
+	Shape_ptr _shape;
+};
 
-// Horizontal Shape
-//class HorizontalShape : public StackedShape {\
-//  using StackedShape::StackedShape;
-//	string getPostScript() const override;
-//};
+//Horizontal Shape
+class HorizontalShape : public Shape {
+	HorizontalShape(Shape_ptr shape);
+	string getPostScript() const override;
+
+private:
+	Shape_ptr _shape;
+};
 
 std::string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes);
-
 
 
 #endif //!SHAPE_HPP
