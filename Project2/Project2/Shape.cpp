@@ -228,11 +228,31 @@ string TranslatedSpace::getPostScript() const
 
 
 
-// Layering function
-/*LayeredShape::LayeredShape()
+LayeredShape::LayeredShape(Shape_ptr shape)
 {
+	_shape = shape;
+}
+string LayeredShape::getPostScript() const {
+	return std::string("%Layered Shape\n" + _shape->getPostScript());
+}
 
-}*/
+
+VerticalShape::VerticalShape(Shape_ptr shape) {
+	_shape = shape;
+}
+string VerticalShape::getPostScript() const {
+	return std::string("%Vertical Shape\n" + _shape->getPostScript() +
+		"0 " + std::to_string(_shape->getHeight()) + " translate\n");
+}
+
+HorizontalShape::HorizontalShape(Shape_ptr shape) {
+	_shape = shape;
+}
+string HorizontalShape::getPostScript() const {
+	return std::string("%Horizontal Shape\n" + _shape->getPostScript() +
+		std::to_string(_shape->getWidth()) + "0 translate\n");
+}
+
 
 string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes)
 {
