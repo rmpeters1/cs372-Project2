@@ -40,9 +40,9 @@ TEST_CASE("Circle") {
 	}
 	SECTION("PostScript Drawing")
 	{
-		string testC1 = "100 100 10.000000 0 360 arc stroke\n";
-		string testC2 = "100 100 3.140000 0 360 arc stroke\n";
-		string testC3 = "100 100 19971129.000000 0 360 arc stroke\n";
+		string testC1 = "%Circle\n 100 100 10.000000 0 360 arc stroke\n\n";
+		string testC2 = "%Circle\n 100 100 3.140000 0 360 arc stroke\n\n";
+		string testC3 = "%Circle\n 100 100 19971129.000000 0 360 arc stroke\n\n";
 		REQUIRE(c2.getPostScript() == testC1);
 		REQUIRE(c3.getPostScript() == testC2);
 		REQUIRE(c4.getPostScript() == testC3);
@@ -60,19 +60,19 @@ TEST_CASE("Polygon") {
 	{
 		Polygon p(3, 50);
 
-		REQUIRE(p.getPostScript() == "/length 50.000000 def\n" \
-			"/nSides 3 def\n" \
-			"/angle { 360 nSides div } def\n" \
-			"gsave\n" \
-			"newpath\n" \
-			"300 300 moveto\n" \
-			"0 angle 360 {\n" \
-			"length 0 lineto\n" \
-			"length 0 translate\n" \
-			"angle rotate\n" \
-			"} for\n" \
-			"closepath\n" \
-			"stroke\n" \
+		REQUIRE(p.getPostScript() == "%Polygon\n/length 50.000000 def\n"
+			"/nSides 3 def\n"
+			"/angle { 360 nSides div } def\n"
+			"gsave\n"
+			"newpath\n"
+			"300 300 moveto\n"
+			"0 angle 360 {\n"
+			"length 0 lineto\n"
+			"length 0 translate\n"
+			"angle rotate\n"
+			"} for\n"
+			"closepath\n"
+			"stroke\n"
 			"grestore\n");
 	}
 
@@ -85,19 +85,19 @@ TEST_CASE("Polygon") {
 	{
 		Polygon p(4, 50);
 
-		REQUIRE(p.getPostScript() == "/length 50.000000 def\n" \
-			"/nSides 4 def\n" \
-			"/angle { 360 nSides div } def\n" \
-			"gsave\n" \
-			"newpath\n" \
-			"300 300 moveto\n" \
-			"0 angle 360 {\n" \
-			"length 0 lineto\n" \
-			"length 0 translate\n" \
-			"angle rotate\n" \
-			"} for\n" \
-			"closepath\n" \
-			"stroke\n" \
+		REQUIRE(p.getPostScript() == "%Polygon\n/length 50.000000 def\n"
+			"/nSides 4 def\n"
+			"/angle { 360 nSides div } def\n"
+			"gsave\n"
+			"newpath\n"
+			"300 300 moveto\n"
+			"0 angle 360 {\n"
+			"length 0 lineto\n"
+			"length 0 translate\n"
+			"angle rotate\n"
+			"} for\n"
+			"closepath\n"
+			"stroke\n"
 			"grestore\n");
 	}
 }
@@ -127,47 +127,95 @@ TEST_CASE("Rectangle") {
 	}
 	SECTION("Rectangle Drawing")
 	{
-		string testC1 = "newpath \n 200 200 moveto\n 0 4.000000 lineto\n 3.000000 0 lineto\n 0 -4.000000 lineto\n closepath\n stroke\n";
-		string testC2 = "newpath \n 200 200 moveto\n 0 20.000000 lineto\n 5.000000 0 lineto\n 0 -20.000000 lineto\n closepath\n stroke\n";
-		string testC3 = "newpath \n 200 200 moveto\n 0 999.000000 lineto\n 100.000000 0 lineto\n 0 -999.000000 lineto\n closepath\n stroke\n";
-		REQUIRE(r1.getPostScript() == testC1);
-		REQUIRE(r2.getPostScript() == testC2);
-		REQUIRE(r3.getPostScript() == testC3);
+		string testR1 = "%Rectangle\n newpath \n 200 200 moveto\n 0 4.000000 rlineto\n 3.000000 0 rlineto\n 0 -4.000000 rlineto\n closepath\n stroke\n\n";
+		string testR2 = "%Rectangle\n newpath \n 200 200 moveto\n 0 20.000000 rlineto\n 5.000000 0 rlineto\n 0 -20.000000 rlineto\n closepath\n stroke\n\n";
+		string testR3 = "%Rectangle\n newpath \n 200 200 moveto\n 0 999.000000 rlineto\n 100.000000 0 rlineto\n 0 -999.000000 rlineto\n closepath\n stroke\n\n";
+		REQUIRE(r1.getPostScript() == testR1);
+		REQUIRE(r2.getPostScript() == testR2);
+		REQUIRE(r3.getPostScript() == testR3);
 	}
 
 }
 
 TEST_CASE("Spacer") {
-	Spacer r0(3, 4);
+	Spacer s0(3, 4);
 	SECTION("Simple Spacer")
 	{
-		REQUIRE(r0.getWidth() == 3);
-		REQUIRE(r0.getHeight() == 4);
+		REQUIRE(s0.getWidth() == 3);
+		REQUIRE(s0.getHeight() == 4);
 
 	}
 
-	Spacer r1(3, 4);
-	Spacer r2(5, 20);
-	Spacer r3(100, 999);
+	Spacer s1(3, 4);
+	Spacer s2(5, 20);
+	Spacer s3(100, 999);
 	SECTION("Spacers with different width and height")
 	{
-		REQUIRE(r1.getWidth() == 3);
-		REQUIRE(r1.getHeight() == 4);
+		REQUIRE(s1.getWidth() == 3);
+		REQUIRE(s1.getHeight() == 4);
 
-		REQUIRE(r2.getWidth() == 5);
-		REQUIRE(r2.getHeight() == 20);
+		REQUIRE(s2.getWidth() == 5);
+		REQUIRE(s2.getHeight() == 20);
 
-		REQUIRE(r3.getWidth() == 100);
-		REQUIRE(r3.getHeight() == 999);
+		REQUIRE(s3.getWidth() == 100);
+		REQUIRE(s3.getHeight() == 999);
+
+		SECTION("Spacer Drawing")
+		{
+			string testS1 = "%Spacer\n 255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 4.000000 lineto\n 3.000000 0 lineto\n 0 -4.000000 lineto\n closepath\n stroke\n";
+			string testS2 = "%Spacer\n 255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 20.000000 lineto\n 5.000000 0 lineto\n 0 -20.000000 lineto\n closepath\n stroke\n";
+			string testS3 = "%Spacer\n 255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 999.000000 lineto\n 100.000000 0 lineto\n 0 -999.000000 lineto\n closepath\n stroke\n";
+			REQUIRE(s1.getPostScript() == testS1);
+			REQUIRE(s2.getPostScript() == testS2);
+			REQUIRE(s3.getPostScript() == testS3);
+		}
+
 	}
-	SECTION("Spacer Drawing")
-	{
-		string testC1 = "255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 4.000000 lineto\n 3.000000 0 lineto\n 0 -4.000000 lineto\n closepath\n stroke\n";
-		string testC2 = "255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 20.000000 lineto\n 5.000000 0 lineto\n 0 -20.000000 lineto\n closepath\n stroke\n";
-		string testC3 = "255 255 255 setrgbcolor\n newpath\n 0 0 moveto\n 0 999.000000 lineto\n 100.000000 0 lineto\n 0 -999.000000 lineto\n closepath\n stroke\n";
-		REQUIRE(r1.getPostScript() == testC1);
-		REQUIRE(r2.getPostScript() == testC2);
-		REQUIRE(r3.getPostScript() == testC3);
-	}
-
 }
+
+
+TEST_CASE("Rotated") {
+	SECTION("Rotate a triangle for 90 degrees")
+	{
+		Triangle t1(56);
+		RotatedShape ro1(std::make_unique<Triangle>(56), 90);
+		REQUIRE(ro1.getHeight() == t1.getWidth());
+		REQUIRE(ro1.getWidth() == t1.getHeight());
+		string testRO1 = "gsave\n90 rotate\n%Polygon\n/length 56.000000 def\n"
+			"/nSides 3 def\n"
+			"/angle { 360 nSides div } def\ngsave\n"
+			"newpath\n300 300 moveto\n"
+			"0 angle 360 {\nlength 0 lineto\n"
+			"length 0 translate\nangle rotate\n} for\n"
+			"closepath\nstroke\ngrestore\ngrestore\n";
+		REQUIRE(ro1.getPostScript() == testRO1);
+	}
+
+	SECTION("Rotate a Rectangle for 180 degrees")
+	{
+		Rectangle r1(20, 30);
+		RotatedShape ro2(std::make_unique<Rectangle>(20, 30), 180);
+		REQUIRE(ro2.getHeight() == r1.getHeight());
+		REQUIRE(ro2.getWidth() == r1.getWidth());
+		string testRO2 = "gsave\n180 rotate\n"
+			"%Rectangle\n newpath \n 200 200 moveto\n 0 30.000000 rlineto\n 20.000000 0 rlineto\n 0 -30.000000 rlineto\n closepath\n stroke\n\ngrestore\n";
+		REQUIRE(ro2.getPostScript() == testRO2);
+	}
+
+	SECTION("Rotate a Triangle for 270 degrees")
+	{
+		Triangle t2(30);
+		RotatedShape ro3(std::make_unique<Triangle>(30), 270);
+		REQUIRE(ro3.getHeight() == t2.getWidth());
+		REQUIRE(ro3.getWidth() == t2.getHeight());
+		string testRO3 = "gsave\n270 rotate\n%Polygon\n/length 30.000000 def\n"
+			"/nSides 3 def\n"
+			"/angle { 360 nSides div } def\ngsave\n"
+			"newpath\n300 300 moveto\n"
+			"0 angle 360 {\nlength 0 lineto\n"
+			"length 0 translate\nangle rotate\n} for\n"
+			"closepath\nstroke\ngrestore\ngrestore\n";
+		REQUIRE(ro3.getPostScript() == testRO3);
+	}
+}
+
