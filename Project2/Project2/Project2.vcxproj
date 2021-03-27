@@ -143,6 +143,7 @@
     <ClInclude Include="Shape.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="draw.cpp" />
     <ClCompile Include="MainTest.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeTest.cpp" />
