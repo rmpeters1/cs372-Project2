@@ -252,8 +252,9 @@ TEST_CASE("Scaled") {
 		REQUIRE(sc2.getWidth() == c1.getWidth() * 0.5);
 		REQUIRE(sc2.getHeight() == c1.getHeight() * 0.8);
 
-		string testSC1 = "gsave\n0.500000 "
+		string testSC2 = "gsave\n0.500000 "
 			"0.800000 scale\n%Circle\n 100 100 40.000000 0 360 arc stroke\n\n"
-			"grestore\ngrestore\n";
+			"grestore\n";
+		REQUIRE(sc2.getPostScript() == testSC2);
 	}
 }
