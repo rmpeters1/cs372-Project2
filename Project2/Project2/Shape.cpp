@@ -49,7 +49,7 @@ double Circle::getHeight() const noexcept
 
 std::string Circle::getPostScript() const
 {
-	return std::string("%Circle\n 100 100 " + std::to_string(_radius) + " 0 360 arc stroke\n\n");
+	return std::string("%Circle\n 200 200 " + std::to_string(_radius) + " 0 360 arc stroke\n\n");
 }
 
 
@@ -92,7 +92,7 @@ std::string Polygon::getPostScript() const
 	return std::string("%Polygon\n/length " + std::to_string(_sideLength) + " def\n"
 		+ "/nSides " + std::to_string(_numSides) + " def\n"
 		+ "/angle { 360 nSides div } def\n" + "gsave\n"
-		+ "newpath\n" + "300 300 moveto\n"
+		+ "newpath\n" + "200 200 moveto\n"
 		+ "0 angle 360 {\n" + "length 0 lineto\n"
 		+ "length 0 translate\n" + "angle rotate\n" + "} for\n"
 		+ "closepath\n" + "stroke\n" + "grestore\n");
@@ -242,27 +242,27 @@ CompoundShape::CompoundShape(vector<shared_ptr<Shape>> shapes) {
 	for (auto const& shape : _shapes)
 	{
 		if (shape->getHeight() > height)
-			height = shape->getHeight();
+			height = shape -> getHeight();
 		if (shape->getWidth() > width)
-			width = shape->getWidth();
+			width = shape -> getWidth();
 	}
 	_width = width;
 	_height = height;
 }
 
 string CompoundShape::getPostScript() const {
-	string postscript = "gsave ";
+	string ps = "gsave\n";
 	for (auto shape : _shapes)
 	{
 		if (shape != *(_shapes.begin()))
 		{
-			postscript += translate(shape);
+			ps += translate(shape);
 		}
-		postscript += shape -> getPostScript();
-		postscript += translate(shape);
+		ps += shape -> getPostScript();
+		ps += translate(shape);
 	}
-	postscript += "grestore ";
-	return postscript;
+	ps += "grestore\n";
+	return ps;
 }
 
 string CompoundShape::translate(shared_ptr<Shape> shape) const {
@@ -283,6 +283,12 @@ LayeredShape::LayeredShape(vector<shared_ptr<Shape>> shapes) {
 	}
 	_width = width;
 	_height = height;
+}
+double LayeredShape::getWidth() const noexcept {
+	return _width;
+}
+double LayeredShape::getHeight() const noexcept {
+	return _height;
 }
 
 string LayeredShape::getPostScript() const 
