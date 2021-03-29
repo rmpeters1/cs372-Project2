@@ -140,8 +140,8 @@ ScaledShape::ScaledShape(Shape_ptr shape, double fx, double fy)
 	_fx = fx;
 	_fy = fy;
 	_shape = shape;
-	_width = _fx * shape->getWidth();
-	_height = _fy * shape->getHeight();
+	_width = _fx * shape -> getWidth();
+	_height = _fy * shape -> getHeight();
 }
 
 double ScaledShape::getWidth() const noexcept
@@ -166,19 +166,18 @@ string ScaledShape::getPostScript() const
 // Rotation function
 RotatedShape::RotatedShape(Shape_ptr shape, int rotationAngle)
 {
+	_rotationAngle = rotationAngle;
+	_shape = shape;
 	if (rotationAngle == 90 || rotationAngle == 270)
 	{
-		_height = shape->getWidth();
-		_width = shape->getHeight();
+		_height = shape -> getWidth();
+		_width = shape -> getHeight();
 	}
 	else if (rotationAngle == 180)
 	{
-		_width = shape->getWidth();
-		_height = shape->getHeight();
+		_width = shape -> getWidth();
+		_height = shape -> getHeight();
 	}
-
-	_rotationAngle = rotationAngle;
-	_shape = shape;
 }
 
 double RotatedShape::getHeight() const noexcept
@@ -219,12 +218,37 @@ string TranslatedShape::getPostScript() const
 }
 
 
-
+/*
 // LayeredShape class
 LayeredShape::LayeredShape(std::vector<Shape_ptr> shapes)
 {
-	_shapes = shapes;
+	_shapes = std::move(shapes);
+}*/
+/*
+double LayeredShape::getHeight() const
+{
+	auto totalHeight{ 0.0 };
+	for (const auto& shapes : *this)
+	{
+		if (shapes->get_height() > totalHeight) {
+			totalHeight = shapes->get_height();
+		}
+	}
+	return totalHeight;
 }
+
+double LayeredShape::getWidth() const
+{
+	auto totalWidth{ 0.0 };
+	for (const auto& shapes : *this)
+	{
+		if (shapes->getWidth() > totalWidth) {
+			totalWidth = shapes->get_width();
+		}
+	}
+	return totalWidth;
+}
+
 
 string LayeredShape::getPostScript() const 
 {
@@ -236,7 +260,7 @@ string LayeredShape::getPostScript() const
 	return std::string("%Layered Shape\n") + ps;
 }
 
-/*
+
 VerticalShape::VerticalShape(std::vector<Shape_ptr>* shapes) 
 {
 	_shape = shape;
@@ -253,8 +277,8 @@ HorizontalShape::HorizontalShape(std::vector<Shape_ptr>* shapes)
 string HorizontalShape::getPostScript() const {
 	return std::string("%Horizontal Shape\n" + _shape->getPostScript() +
 		std::to_string(_shape->getWidth()) + "0 translate\n");
-}
-*/
+}*/
+
 
 /*
 string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes)

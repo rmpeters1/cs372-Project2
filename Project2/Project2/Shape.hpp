@@ -13,12 +13,10 @@ using std::string;
 using std::vector;
 
 const float pi = 3.14159265359;
-// Syntax Creation
-using Shape_ptr = std::unique_ptr<Shape>;
-using Shapes = std::vector<Shape_ptr>;
 
 class Shape {
 public:
+	using Shape_ptr = std::shared_ptr<Shape>;
 	virtual ~Shape() = default;
 	Shape() = default;
 	virtual std::string getPostScript() const = 0;
@@ -139,22 +137,21 @@ private:
 	double x_trans;
 	double y_trans;
 };
-
-
-
+/*
 // Layered Shape
 class LayeredShape : public Shape 
 {
 public:
 	LayeredShape(std::vector<Shape_ptr> shapes);
+	double getWidth() const noexcept override;
+	double getHeight() const noexcept override;
 	string getPostScript() const override;
 private:
 	std::vector<Shape_ptr> _shapes;
+	double _width;
+	double _height;
 };
 
-
-
-/*
 //Vertical Shape
 class VerticalShape : public Shape 
 {
@@ -165,8 +162,6 @@ private:
 	std::vector<Shape_ptr> _shapes;
 };
 
-
-
 //Horizontal Shape
 class HorizontalShape : public Shape 
 {
@@ -176,8 +171,7 @@ class HorizontalShape : public Shape
 private:
 	std::vector<Shape_ptr> _shapes;
 };
+
+std::string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes);
 */
-
-//std::string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes);
-
 #endif //!SHAPE_HPP
