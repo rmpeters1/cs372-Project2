@@ -26,16 +26,16 @@ public:
 	virtual double getWidth() const = 0;
 	virtual double getHeight() const = 0;
 private:
-	double _width;
-	double _height;
+	double _width = 0;
+	double _height = 0;
 };
 
 class Circle : public Shape {
 public:
 	Circle(double rad);
 
-	double getWidth() const noexcept override;
-	double getHeight() const noexcept override;
+	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 
 	std::string getPostScript() const override;
 
@@ -49,8 +49,8 @@ private:
 class Polygon : public Shape {
 public:
 	Polygon(int numSides, double sideLength);
-	double getWidth() const noexcept override;
-	double getHeight() const noexcept override;
+	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 	std::string getPostScript() const override;
 
 private:
@@ -77,8 +77,8 @@ class Rectangle : public Shape {
 public:
 	Rectangle(double _width, double _height);
 
-	double getHeight() const noexcept override;
-	double getWidth() const noexcept override;
+	double getHeight() const noexcept;
+	double getWidth() const noexcept;
 
 	std::string getPostScript() const override;
 
@@ -92,8 +92,8 @@ class Spacer : public Shape
 public:
 	Spacer(double _width, double _height);
 
-	double getWidth() const noexcept override;
-	double getHeight() const noexcept override;
+	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 
 	std::string getPostScript() const;
 
@@ -122,8 +122,8 @@ class RotatedShape : public Shape
 {
 public:
 	RotatedShape(Shape_ptr shape, int rotationAngle);
-	double getWidth() const noexcept override;
-	double getHeight() const noexcept override;
+	double getWidth() const noexcept;
+	double getHeight() const noexcept;
 	string getPostScript() const override;
 private:
 	Shape_ptr _shape;
@@ -132,17 +132,18 @@ private:
 	double _height;
 };
 
+/*
 class TranslatedShape : public Shape
 {
 public:
 	TranslatedShape(int x, int y);
-	double getTranslateX() const noexcept;
-	double getTranslateY() const noexcept;
+	double getTranslateX() const;
+	double getTranslateY() const;
 	string getPostScript() const override;
 private:
 	double x_trans;
 	double y_trans;
-};
+};*/
 
 // CompoundShape Class
 class CompoundShape : public Shape
@@ -151,7 +152,9 @@ public:
 	CompoundShape() = default;
 	CompoundShape(vector<shared_ptr<Shape>> shapes);
 	virtual ~CompoundShape() = default;
-	string getPostScript() const override;
+	virtual double getWidth() const noexcept;
+	virtual double getHeight() const noexcept;
+	virtual string getPostScript() const = 0;
 protected:
 	vector<shared_ptr<Shape>> _shapes;
 	virtual string translate(shared_ptr<Shape> shape) const;

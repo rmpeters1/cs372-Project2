@@ -16,7 +16,20 @@ string translate(int x, int y)
 {
 	return std::to_string(x) + " " + std::to_string(y) + " translate\n";
 }
+double Shape::getWidth() const {
+	return _width;
+}
 
+double Shape::getHeight() const {
+	return _height;
+}
+double CompoundShape::getWidth() const noexcept {
+	return _width;
+}
+
+double CompoundShape::getHeight() const noexcept {
+	return _height;
+}
 // Circle Class
 Circle::Circle(double rad)
 {
@@ -202,7 +215,7 @@ string RotatedShape::getPostScript() const
 }
 
 
-
+/*
 // TranslatedSpace class
 TranslatedShape::TranslatedShape(int x, int y)
 {
@@ -220,7 +233,7 @@ double TranslatedShape::getTranslateY() const noexcept
 string TranslatedShape::getPostScript() const
 {
 	return std::string("%Translate\n" + std::to_string(x_trans) + " " + std::to_string(y_trans) + " translate\n");
-}
+}*/
 
 CompoundShape::CompoundShape(vector<shared_ptr<Shape>> shapes) {
 	_shapes = shapes;
