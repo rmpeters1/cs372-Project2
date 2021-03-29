@@ -12,6 +12,11 @@ using std::sin;
 #include <random>
 #include <functional>
 
+string translate(int x, int y)
+{
+	return std::to_string(x) + " " + std::to_string(y) + " translate\n";
+}
+
 // Circle Class
 Circle::Circle(double rad)
 {
@@ -217,74 +222,102 @@ string TranslatedShape::getPostScript() const
 	return std::string("%Translate\n" + std::to_string(x_trans) + " " + std::to_string(y_trans) + " translate\n");
 }
 
+CompoundShape::CompoundShape(vector<shared_ptr<Shape>> shapes) {
+	_shapes = shapes;
+	double width = 0;
+	double height = 0;
+	for (auto const& shape : _shapes)
+	{
+		if (shape->getHeight() > height)
+			height = shape->getHeight();
+		if (shape->getWidth() > width)
+			width = shape->getWidth();
+	}
+	_width = width;
+	_height = height;
+}
 
-/*
+string CompoundShape::getPostScript() const {
+	string postscript = "gsave ";
+	for (auto shape : _shapes)
+	{
+		if (shape != *(_shapes.begin()))
+		{
+			postscript += translate(shape);
+		}
+		postscript += shape -> getPostScript();
+		postscript += translate(shape);
+	}
+	postscript += "grestore ";
+	return postscript;
+}
+
+string CompoundShape::translate(shared_ptr<Shape> shape) const {
+	return string();
+}
+
 // LayeredShape class
-LayeredShape::LayeredShape(std::vector<Shape_ptr> shapes)
-{
-	_shapes = std::move(shapes);
-}*/
-/*
-double LayeredShape::getHeight() const
-{
-	auto totalHeight{ 0.0 };
-	for (const auto& shapes : *this)
+LayeredShape::LayeredShape(vector<shared_ptr<Shape>> shapes) {
+	_shapes = shapes;
+	double width = 0;
+	double height = 0;
+	for (auto const& shape : _shapes)
 	{
-		if (shapes->get_height() > totalHeight) {
-			totalHeight = shapes->get_height();
-		}
+		if (shape -> getHeight() > height)
+			height = shape -> getHeight();
+		if (shape -> getWidth() > width)
+			width = shape -> getWidth();
 	}
-	return totalHeight;
+	_width = width;
+	_height = height;
 }
-
-double LayeredShape::getWidth() const
-{
-	auto totalWidth{ 0.0 };
-	for (const auto& shapes : *this)
-	{
-		if (shapes->getWidth() > totalWidth) {
-			totalWidth = shapes->get_width();
-		}
-	}
-	return totalWidth;
-}
-
 
 string LayeredShape::getPostScript() const 
 {
 	std::string ps;
-	for (int i = 0; i < _shapes.size(); i++)
+	for (auto const& shape : _shapes)
 	{
-		ps += _shapes[i].get().getPostScript();
+		ps += shape -> getPostScript();
 	}
 	return std::string("%Layered Shape\n") + ps;
 }
 
-
-VerticalShape::VerticalShape(std::vector<Shape_ptr>* shapes) 
-{
-	_shape = shape;
-}
-string VerticalShape::getPostScript() const {
-	return std::string("%Vertical Shape\n" + _shape->getPostScript() +
-		"0 " + std::to_string(_shape->getHeight()) + " translate\n");
-}
-
-HorizontalShape::HorizontalShape(std::vector<Shape_ptr>* shapes) 
-{
-	_shape = shape;
-}
-string HorizontalShape::getPostScript() const {
-	return std::string("%Horizontal Shape\n" + _shape->getPostScript() +
-		std::to_string(_shape->getWidth()) + "0 translate\n");
-}*/
-
-
-/*
-string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes)
-{
-	for (auto const& s : shapes) {
-		return s->getPostScript();
+// VerticalShape class
+VerticalShape::VerticalShape(vector<shared_ptr<Shape>> shapes) {
+	_shapes = shapes;
+	double width = 0;
+	double height = 0;
+	for (auto const& shape : _shapes)
+	{
+		height += shape->getHeight();
+		if (shape->getWidth() > width)
+			width = shape->getWidth();
 	}
+	_width = width;
+	_height = height;
 }
-*/
+
+string VerticalShape::translate(shared_ptr<Shape> shape) const {
+	return std::string("%Vertical Shape\n" + shape -> getPostScript() +
+		"0 " + std::to_string(shape -> getHeight()) + " translate\n");
+}
+
+// HorizontalShape class
+HorizontalShape::HorizontalShape(vector<shared_ptr<Shape>> shapes) {
+	_shapes = shapes;
+	double width = 0;
+	double height = 0;
+	for (auto const& shape : _shapes)
+	{
+		width += shape->getWidth();
+		if (shape->getHeight() > height)
+			height = shape->getHeight();
+	}
+	_width = width;
+	_height = height;
+}
+
+string HorizontalShape::translate(shared_ptr<Shape> shape) const {
+	return std::string("%Horizontal Shape\n" + shape -> getPostScript() +
+		std::to_string(shape -> getWidth()) + "0 translate\n");
+}

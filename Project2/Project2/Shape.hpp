@@ -11,8 +11,11 @@ using std::string;
 #include <stdarg.h>
 #include<vector>
 using std::vector;
+using std::shared_ptr;
+using std::make_shared;
 
 const float pi = 3.14159265359;
+string translate(int x, int y);
 
 class Shape {
 public:
@@ -22,6 +25,9 @@ public:
 	virtual std::string getPostScript() const = 0;
 	virtual double getWidth() const = 0;
 	virtual double getHeight() const = 0;
+private:
+	double _width;
+	double _height;
 };
 
 class Circle : public Shape {
@@ -137,15 +143,29 @@ private:
 	double x_trans;
 	double y_trans;
 };
-/*
-// Layered Shape
-class LayeredShape : public Shape 
+
+// CompoundShape Class
+class CompoundShape : public Shape
 {
 public:
-	LayeredShape(std::vector<Shape_ptr> shapes);
-	double getWidth() const noexcept override;
-	double getHeight() const noexcept override;
+	CompoundShape() = default;
+	CompoundShape(vector<shared_ptr<Shape>> shapes);
+	virtual ~CompoundShape() = default;
 	string getPostScript() const override;
+protected:
+	vector<shared_ptr<Shape>> _shapes;
+	virtual string translate(shared_ptr<Shape> shape) const;
+	double _width;
+	double _height;
+};
+
+
+// Layered Shape
+class LayeredShape : public CompoundShape
+{
+public:
+	LayeredShape(vector<shared_ptr<Shape>> shapes);
+	string getPostScript() const;
 private:
 	std::vector<Shape_ptr> _shapes;
 	double _width;
@@ -156,22 +176,27 @@ private:
 class VerticalShape : public Shape 
 {
 public:
-	VerticalShape(std::vector<Shape_ptr> shapes);
-	string getPostScript() const override;
-private:
+	VerticalShape(vector<shared_ptr<Shape>> shapes);
+protected:
 	std::vector<Shape_ptr> _shapes;
+	string translate(shared_ptr<Shape> shape) const;
+private:
+	double _width;
+	double _height;
 };
 
 //Horizontal Shape
 class HorizontalShape : public Shape 
 {
+public:
 	HorizontalShape(std::vector<Shape_ptr> shapes);
-	string getPostScript() const override;
-
-private:
+protected:
 	std::vector<Shape_ptr> _shapes;
+	string translate(shared_ptr<Shape> shape) const;
+private:
+	double _width;
+	double _height;
 };
 
-std::string getPostScript(std::vector<std::unique_ptr<Shape>> const& shapes);
-*/
+
 #endif //!SHAPE_HPP
