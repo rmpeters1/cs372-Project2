@@ -1,91 +1,75 @@
-﻿  MainTest.cpp
+﻿  draw.cpp
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(14,2): error C2065: 'Shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(14,9): error C2146: syntax error: missing ';' before identifier 'shapes'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(14,9): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(17,2): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(17,12): error C2146: syntax error: missing ';' before identifier 'c1'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(17,12): error C2065: 'c1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(18,2): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(18,12): error C2146: syntax error: missing ';' before identifier 's1'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(18,12): error C2065: 's1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(19,2): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(19,12): error C2146: syntax error: missing ';' before identifier 't1'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(19,12): error C2065: 't1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(20,2): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(20,12): error C2146: syntax error: missing ';' before identifier 'ts1'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(20,12): error C2065: 'ts1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(20,35): error C2065: 'TranslatedShape': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(20,23): error C2672: 'std::make_unique': no matching overloaded function found
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(20,60): error C2974: 'std::make_unique': invalid template argument for '_Ty', type expected
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2843): message : see declaration of 'std::make_unique'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(21,2): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(21,12): error C2146: syntax error: missing ';' before identifier 'ts2'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(21,12): error C2065: 'ts2': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(21,35): error C2065: 'TranslatedShape': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(21,23): error C2672: 'std::make_unique': no matching overloaded function found
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(21,60): error C2974: 'std::make_unique': invalid template argument for '_Ty', type expected
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2843): message : see declaration of 'std::make_unique'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(23,14): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(23,7): error C2923: 'std::vector': 'Shape_ptr' is not a valid template type argument for parameter '_Ty'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(23,7): error C2976: 'std::vector': too few template arguments
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\vector(413): message : see declaration of 'std::vector'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(23,38): error C2133: 'layeredshapes': unknown size
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(23,25): error C2512: 'std::vector': no appropriate default constructor available
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\vector(413,1): message : see declaration of 'std::vector'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(24,26): error C2065: 'c1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(25,26): error C2065: 't1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(26,2): error C2065: 'Shape_ptr': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(26,12): error C2146: syntax error: missing ';' before identifier 'ls1'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(26,12): error C2065: 'ls1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(29,2): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(29,19): error C2065: 'ts1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(30,2): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(30,19): error C2065: 'c1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(31,2): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(31,19): error C2065: 's1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(32,2): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(32,19): error C2065: 'ts2': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(33,2): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(33,19): error C2065: 'ls1': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,23): error C2065: 'shapes': undeclared identifier
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,23): error C2672: 'begin': no matching overloaded function found
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): error C2893: Failed to specialize function template 'unknown-type std::begin(_Container &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xutility(2169): message : see declaration of 'std::begin'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): message : With the following template arguments:
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): message : '_Container=unknown-type'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): error C2784: 'const _Elem *std::begin(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unknown-type'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\initializer_list(57): message : see declaration of 'std::begin'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,23): error C2672: 'end': no matching overloaded function found
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): error C2893: Failed to specialize function template 'unknown-type std::end(_Container &)'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\xutility(2179): message : see declaration of 'std::end'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): message : With the following template arguments:
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): message : '_Container=unknown-type'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): error C2784: 'const _Elem *std::end(std::initializer_list<_Elem>) noexcept': could not deduce template argument for 'std::initializer_list<_Elem>' from 'unknown-type'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\initializer_list(63): message : see declaration of 'std::end'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): error C3536: '<begin>$L0': cannot be used before it is initialized
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,31): error C3536: '<end>$L0': cannot be used before it is initialized
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(36,29): error C2100: illegal indirection
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\draw.cpp(37,35): error C2065: 'shapes': undeclared identifier
+  MainTest.cpp
   Shape.cpp
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(15,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(17,35): error C2065: 'Shape': undeclared identifier
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(17,24): error C2923: 'std::unique_ptr': 'Shape' is not a valid template type argument for parameter '_Ty'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(17,24): error C2976: 'std::unique_ptr': too few template arguments
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(18,28): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(149,27): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(152,14): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(139,1): error C2512: 'std::unique_ptr': no appropriate default constructor available
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572,1): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(142,16): error C2678: binary '=': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2687,17): message : could be 'std::unique_ptr<_Ty,_Dx> &std::unique_ptr<_Ty,_Dx>::operator =(const std::unique_ptr<_Ty,_Dx> &)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2584,17): message : or       'std::unique_ptr<_Ty,_Dx> &std::unique_ptr<_Ty,_Dx>::operator =(std::nullptr_t) noexcept'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(142,16): message : while trying to match the argument list '(Shape_ptr, Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(142,16): error C2582: 'operator =' function is unavailable in 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(143,22): error C2678: binary '->': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(143,22): message : while trying to match the argument list '(Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(143,24): error C2039: 'getWidth': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(144,23): error C2678: binary '->': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(144,23): message : while trying to match the argument list '(Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(144,25): error C2039: 'getHeight': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(160,46): error C2678: binary '->': no operator found which takes a left-hand operand of type 'const Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(160,46): message : while trying to match the argument list '(const Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(160,48): error C2039: 'getPostScript': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(168,1): error C2512: 'std::unique_ptr': no appropriate default constructor available
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572,1): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(171,18): error C2678: binary '->': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(171,18): message : while trying to match the argument list '(Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(171,20): error C2039: 'getWidth': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(172,17): error C2678: binary '->': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(172,17): message : while trying to match the argument list '(Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(172,19): error C2039: 'getHeight': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(176,17): error C2678: binary '->': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(176,17): message : while trying to match the argument list '(Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(176,19): error C2039: 'getWidth': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(177,18): error C2678: binary '->': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(177,18): message : while trying to match the argument list '(Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(177,20): error C2039: 'getHeight': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(181,16): error C2678: binary '=': no operator found which takes a left-hand operand of type 'Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2687,17): message : could be 'std::unique_ptr<_Ty,_Dx> &std::unique_ptr<_Ty,_Dx>::operator =(const std::unique_ptr<_Ty,_Dx> &)'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2584,17): message : or       'std::unique_ptr<_Ty,_Dx> &std::unique_ptr<_Ty,_Dx>::operator =(std::nullptr_t) noexcept'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(181,16): message : while trying to match the argument list '(Shape_ptr, Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(181,16): error C2582: 'operator =' function is unavailable in 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(197,11): error C2678: binary '->': no operator found which takes a left-hand operand of type 'const Shape_ptr' (or there is no acceptable conversion)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2663,24): message : could be '_Get_deleter_pointer_type<_Ty,remove_reference<_Ty1>::type,void>::type std::unique_ptr<_Ty,_Dx>::operator ->(void) noexcept const'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(197,11): message : while trying to match the argument list '(const Shape_ptr)'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(197,13): error C2039: 'getPostScript': is not a member of 'std::unique_ptr'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(224,40): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.cpp(232,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\shape.hpp(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
   ShapeTest.cpp
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(15,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(17,35): error C2065: 'Shape': undeclared identifier
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(17,24): error C2923: 'std::unique_ptr': 'Shape' is not a valid template type argument for parameter '_Ty'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(17,24): error C2976: 'std::unique_ptr': too few template arguments
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2572): message : see declaration of 'std::unique_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(18,28): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(149,27): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(152,14): error C3203: 'unique_ptr': unspecialized class template can't be used as a template argument for template parameter '_Ty', expected a real type
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(181,55): error C2664: 'RotatedShape::RotatedShape(Shape_ptr,int)': cannot convert argument 1 from 'std::unique_ptr<Triangle,std::default_delete<Triangle>>' to 'Shape_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(181,46): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(120,2): message : see declaration of 'RotatedShape::RotatedShape'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(197,61): error C2664: 'RotatedShape::RotatedShape(Shape_ptr,int)': cannot convert argument 1 from 'std::unique_ptr<Rectangle,std::default_delete<Rectangle>>' to 'Shape_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(197,47): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(120,2): message : see declaration of 'RotatedShape::RotatedShape'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(208,56): error C2664: 'RotatedShape::RotatedShape(Shape_ptr,int)': cannot convert argument 1 from 'std::unique_ptr<Triangle,std::default_delete<Triangle>>' to 'Shape_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(208,46): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(120,2): message : see declaration of 'RotatedShape::RotatedShape'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(227,60): error C2664: 'ScaledShape::ScaledShape(Shape_ptr,double,double)': cannot convert argument 1 from 'std::unique_ptr<Triangle,std::default_delete<Triangle>>' to 'Shape_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(227,45): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(104,2): message : see declaration of 'ScaledShape::ScaledShape'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(251,58): error C2664: 'ScaledShape::ScaledShape(Shape_ptr,double,double)': cannot convert argument 1 from 'std::unique_ptr<Circle,std::default_delete<Circle>>' to 'Shape_ptr'
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\ShapeTest.cpp(251,43): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(104,2): message : see declaration of 'ScaledShape::ScaledShape'
+C:\Users\Hunter\Documents\CS\Git\repos\cs372-Project2\Project2\Project2\Shape.hpp(17,31): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
