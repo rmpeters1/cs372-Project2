@@ -40,9 +40,9 @@ TEST_CASE("Circle") {
 	}
 	SECTION("PostScript Drawing")
 	{
-		string testC1 = "%Circle\n 200 200 10.000000 0 360 arc stroke\n\n";
-		string testC2 = "%Circle\n 200 200 3.140000 0 360 arc stroke\n\n";
-		string testC3 = "%Circle\n 200 200 19971129.000000 0 360 arc stroke\n\n";
+		string testC1 = "%Circle\n 100 100 10.000000 0 360 arc stroke\n\n";
+		string testC2 = "%Circle\n 100 100 3.140000 0 360 arc stroke\n\n";
+		string testC3 = "%Circle\n 100 100 19971129.000000 0 360 arc stroke\n\n";
 		REQUIRE(c2.getPostScript() == testC1);
 		REQUIRE(c3.getPostScript() == testC2);
 		REQUIRE(c4.getPostScript() == testC3);
@@ -65,7 +65,7 @@ TEST_CASE("Polygon") {
 			"/angle { 360 nSides div } def\n"
 			"gsave\n"
 			"newpath\n"
-			"200 200 moveto\n"
+			"300 300 moveto\n"
 			"0 angle 360 {\n"
 			"length 0 lineto\n"
 			"length 0 translate\n"
@@ -90,7 +90,7 @@ TEST_CASE("Polygon") {
 			"/angle { 360 nSides div } def\n"
 			"gsave\n"
 			"newpath\n"
-			"200 200 moveto\n"
+			"300 300 moveto\n"
 			"0 angle 360 {\n"
 			"length 0 lineto\n"
 			"length 0 translate\n"
@@ -184,7 +184,7 @@ TEST_CASE("Rotated") {
 		string testRO1 = "gsave\n90 rotate\n%Polygon\n/length 56.000000 def\n"
 			"/nSides 3 def\n"
 			"/angle { 360 nSides div } def\ngsave\n"
-			"newpath\n200 200 moveto\n"
+			"newpath\n300 300 moveto\n"
 			"0 angle 360 {\nlength 0 lineto\n"
 			"length 0 translate\nangle rotate\n} for\n"
 			"closepath\nstroke\ngrestore\ngrestore\n";
@@ -211,7 +211,7 @@ TEST_CASE("Rotated") {
 		string testRO3 = "gsave\n270 rotate\n%Polygon\n/length 30.000000 def\n"
 			"/nSides 3 def\n"
 			"/angle { 360 nSides div } def\ngsave\n"
-			"newpath\n200 200 moveto\n"
+			"newpath\n300 300 moveto\n"
 			"0 angle 360 {\nlength 0 lineto\n"
 			"length 0 translate\nangle rotate\n} for\n"
 			"closepath\nstroke\ngrestore\ngrestore\n";
@@ -234,7 +234,7 @@ TEST_CASE("Scaled") {
 			"/angle { 360 nSides div } def\n"
 			"gsave\n"
 			"newpath\n"
-			"200 200 moveto\n"
+			"300 300 moveto\n"
 			"0 angle 360 {\n"
 			"length 0 lineto\n"
 			"length 0 translate\n"
@@ -253,70 +253,8 @@ TEST_CASE("Scaled") {
 		REQUIRE(sc2.getHeight() == c1.getHeight() * 0.8);
 
 		string testSC2 = "gsave\n0.500000 "
-			"0.800000 scale\n%Circle\n 200 200 40.000000 0 360 arc stroke\n\n"
+			"0.800000 scale\n%Circle\n 100 100 40.000000 0 360 arc stroke\n\n"
 			"grestore\n";
 		REQUIRE(sc2.getPostScript() == testSC2);
 	}
-}
-
-TEST_CASE("Layer") {
-	
-
-	SECTION("Layer two shapes: a circle and a square")
-	{
-		Circle c1(18);
-		Square sq1(28);
-		LayeredShape layer1(vector<shared_ptr<Shape>> {make_shared<Circle>(18), make_shared<Square>(28)});
-		REQUIRE(layer1.getWidth() == c1.getWidth());
-		REQUIRE(layer1.getHeight() == c1.getHeight());
-
-		string testLayer1 = "%Layered Shape\n"
-			"%Circle\n 200 200 18.000000 0 360 arc stroke\n\n"
-			"%Polygon\n/length 28.000000 def\n"
-			"/nSides 4 def\n"
-			"/angle { 360 nSides div } def\n"
-			"gsave\n"
-			"newpath\n"
-			"200 200 moveto\n"
-			"0 angle 360 {\n"
-			"length 0 lineto\n"
-			"length 0 translate\n"
-			"angle rotate\n"
-			"} for\n"
-			"closepath\n"
-			"stroke\n"
-			"grestore\n";
-		REQUIRE(layer1.getPostScript() == testLayer1);
-	}
-
-	SECTION("Layer three shapes: a triangle, a rectangle, and a circle")
-	{
-		Triangle t1(25);
-		Rectangle r1(30, 17);
-		Circle c1(12);
-		LayeredShape layer2({make_shared<Triangle>(25), make_shared<Rectangle>(30, 17), make_shared<Circle>(12)});
-		REQUIRE(layer2.getWidth() == r1.getWidth());
-		REQUIRE(layer2.getHeight() == c1.getHeight());
-
-		string testLayer2 = "%Layered Shape\n"
-			"%Polygon\n/length 25.000000 def\n"
-			"/nSides 3 def\n"
-			"/angle { 360 nSides div } def\n"
-			"gsave\n"
-			"newpath\n"
-			"200 200 moveto\n"
-			"0 angle 360 {\n"
-			"length 0 lineto\n"
-			"length 0 translate\n"
-			"angle rotate\n"
-			"} for\n"
-			"closepath\n"
-			"stroke\n"
-			"grestore\n"
-			"%Rectangle\n newpath \n 200 200 moveto\n 0 17.000000 rlineto\n 30.000000 0 rlineto\n 0 -17.000000 rlineto\n closepath\n stroke\n\n"
-			"%Circle\n 200 200 12.000000 0 360 arc stroke\n\n";
-		REQUIRE(layer2.getPostScript() == testLayer2);
-
-	}
-
 }

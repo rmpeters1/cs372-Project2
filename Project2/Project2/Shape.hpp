@@ -168,8 +168,6 @@ class LayeredShape : public CompoundShape
 {
 public:
 	LayeredShape(vector<shared_ptr<Shape>> shapes);
-	double getWidth() const noexcept;
-	double getHeight() const noexcept;
 	string getPostScript() const;
 private:
 	std::vector<Shape_ptr> _shapes;
