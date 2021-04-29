@@ -132,18 +132,17 @@ private:
 	double _height;
 };
 
-/*
 class TranslatedShape : public Shape
 {
 public:
 	TranslatedShape(int x, int y);
-	double getTranslateX() const;
-	double getTranslateY() const;
+	double getWidth() const;
+	double getHeight() const;
 	string getPostScript() const override;
 private:
 	double x_trans;
 	double y_trans;
-};*/
+};
 
 // CompoundShape Class
 class CompoundShape : public Shape
