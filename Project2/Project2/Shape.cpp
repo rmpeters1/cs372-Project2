@@ -215,25 +215,24 @@ string RotatedShape::getPostScript() const
 }
 
 
-/*
 // TranslatedSpace class
 TranslatedShape::TranslatedShape(int x, int y)
 {
 	x_trans = x;
 	y_trans = y;
 }
-double TranslatedShape::getTranslateX() const noexcept
+double TranslatedShape::getWidth() const
 {
 	return x_trans;
 }
-double TranslatedShape::getTranslateY() const noexcept
+double TranslatedShape::getHeight() const
 {
 	return y_trans;
 }
 string TranslatedShape::getPostScript() const
 {
 	return std::string("%Translate\n" + std::to_string(x_trans) + " " + std::to_string(y_trans) + " translate\n");
-}*/
+}
 
 CompoundShape::CompoundShape(vector<shared_ptr<Shape>> shapes) {
 	_shapes = shapes;
